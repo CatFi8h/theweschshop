@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -24,7 +25,7 @@ public class Color {
     private String colorName;
 
     @OneToMany(mappedBy = "color")
-    private Element element;
+    private List<Element> element;
 
     private String gradient;
 

@@ -39,15 +39,16 @@ public class Element {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "tid")
-    private List<Type> type;
+    private Type type;
 
     @OneToMany(mappedBy = "element")
     private Picture pictureId;
 
+    //TODO 
     private Size size;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "cid")
-    private List<Color> color;
+    private Color color;
 }
