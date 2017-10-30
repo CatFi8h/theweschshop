@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>UserList</title>
+</head>
+
+<body>
+Hello User List
+<span th:text="'Message: ' + ${userList}"></span>
+<span th:text="'Time: ' + ${time}"></span>
+<br>
+</br>
+
+<!--<form th:action="@{/users/delete}" method="post">-->
+    <!--<input type="hidden" th:field="${userList.get(0).id}" />-->
+    <!--<button type="submit">Delete</button>-->
+<!--</form>-->
+<script src="/templates/js/userFunctions.js"></script>
+
+</body>
+
+</html>

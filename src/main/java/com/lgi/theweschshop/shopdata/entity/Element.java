@@ -1,13 +1,12 @@
 package com.lgi.theweschshop.shopdata.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.lgi.theweschshop.shopdata.domain.Size;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -27,28 +26,46 @@ public class Element {
 
     private String description;
 
-    @Column(name = "available_amount")
-    private Integer availableAmount;
-
     private String comments;
 
     @Column(name = "creation_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany
     @JsonIgnore
-    @JoinColumn(name = "tid")
-    private Type type;
+    @JoinTable(
+            name = "element_type_synthetic",
+            joinColumns = {@JoinColumn(name = "element_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "type_id", referencedColumnName = "tid")}
+    )
+    private Set<Type> type;
 
-    @OneToMany(mappedBy = "element")
-    private Picture pictureId;
+    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
+    private Set<Picture> picture;
 
-    //TODO 
-    private Size size;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany
     @JsonIgnore
-    @JoinColumn(name = "cid")
-    private Color color;
+    @JoinTable(
+            name = "element_size_synthetic",
+            joinColumns = {@JoinColumn(name = "element_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "size_id", referencedColumnName = "sid")}
+    )
+    private Set<SizeEntity> sizeEntities;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "element_color_synthetic",
+            joinColumns = {@JoinColumn(name = "element_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "color_id", referencedColumnName = "cid")}
+    )
+    private Set<Color> color;
+
+
+    public Element( String elementName, String description ) {
+        this.name = elementName;
+        this.description = description;
+    }
 }

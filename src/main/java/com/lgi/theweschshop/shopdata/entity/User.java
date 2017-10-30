@@ -1,9 +1,13 @@
 package com.lgi.theweschshop.shopdata.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -12,6 +16,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(schema = "tws_storage", name = "user")
 public class User {
 
@@ -30,4 +35,29 @@ public class User {
 
     private String avatar;
 
+
+    public User( String id, String name, String password ) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+    }
+
+    public User( String id,  String name, String surname, String password ) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", accessType='" + accessType + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
+    }
 }

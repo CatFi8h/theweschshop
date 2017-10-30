@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public class ElementDAOImpl extends AbstractGenericDAO<Element> implements ElementDAO {
 
+    @Override
     public List<Element> findAllElements() {
         Query query = entityManager.createQuery( "select t from Element t" );
         List<Element> list = query.getResultList();

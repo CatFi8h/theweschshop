@@ -1,11 +1,9 @@
 package com.lgi.theweschshop.shopdata.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -24,8 +22,8 @@ public class Color {
     @Column(name = "color_name")
     private String colorName;
 
-    @OneToMany(mappedBy = "color")
-    private List<Element> element;
+//    @OneToMany(mappedBy = "color")
+//    private Set<Element> element;
 
     private String gradient;
 

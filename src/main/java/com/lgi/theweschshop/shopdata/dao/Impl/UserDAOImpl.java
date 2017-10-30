@@ -14,12 +14,11 @@ import java.util.List;
 @Repository
 public class UserDAOImpl extends AbstractGenericDAO<User> implements UserDAO {
 
+    @Override
     public List<User> getAllUsers() {
         Query query = entityManager.createQuery( "select u from User u" );
         List<User> list = query.getResultList();
         return list;
     }
-
-
 
 }

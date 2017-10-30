@@ -4,14 +4,16 @@ import com.lgi.theweschshop.shopdata.dao.UserDAO;
 import com.lgi.theweschshop.shopdata.entity.User;
 import com.lgi.theweschshop.shopdata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
  */
-@Repository
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -24,11 +26,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void addUser( User user ) {
         userDAO.persist( user );
     }
 
-    public void removeUser( User user ) {
+    @Override
+    public List<User> getUserList() {
+        return userDAO.getAllUsers();
+    }
+
+    @Override
+    @Transactional
+    public void delete( User user ) {
         userDAO.remove( user );
     }
 

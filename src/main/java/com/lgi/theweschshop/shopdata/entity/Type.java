@@ -1,6 +1,5 @@
 package com.lgi.theweschshop.shopdata.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "type")
+@Table(schema = "tws_storage", name = "e_type")
 public class Type {
 
     @Id
@@ -22,8 +21,5 @@ public class Type {
 
     @Column(name = "type_name")
     private String typeName;
-
-    @OneToMany(mappedBy = "type")
-    private Element element;
 
 }

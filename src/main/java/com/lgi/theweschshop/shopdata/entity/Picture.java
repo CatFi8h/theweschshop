@@ -3,10 +3,8 @@ package com.lgi.theweschshop.shopdata.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -26,13 +24,12 @@ public class Picture {
 
     @Lob
     @Column(name = "picture")
-    @Type(type = "org.hibernate.type.BinaryType")
+//    @Type(type = "org.hibernate.type.BinaryType")
     private byte[] picture;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "id")
-    private List<Element> element;
-
+    private Element element;
 
 }
