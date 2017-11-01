@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void addUser( User user ) {
+    public void addUser( String email, String userName, String password ) {
+        User user = new User( email, userName, password );
         userDAO.persist( user );
     }
 

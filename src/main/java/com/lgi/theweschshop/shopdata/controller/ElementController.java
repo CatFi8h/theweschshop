@@ -40,8 +40,7 @@ public class ElementController {
     }
 
     @PostMapping("/addElement")
-    public String addElement( Model model,
-                              @RequestParam String elementName,
+    public String addElement( @RequestParam String elementName,
                               @RequestParam String description ) {
 
         elementService.addElement( elementName, description );

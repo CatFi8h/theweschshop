@@ -12,7 +12,7 @@ public interface UserService {
 
     Optional<User> getUserById( String id );
 
-    void addUser( User user );
+    void addUser( String email, String userName, String password );
 
     List<User> getUserList();
 

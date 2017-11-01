@@ -2,7 +2,9 @@ package com.lgi.theweschshop.shopdata.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +23,8 @@ import javax.persistence.Table;
 public class User {
 
     @Id
+    @Email
+    @NonNull
     @Column(name = "uid")
     private String id;
 
