@@ -1,15 +1,13 @@
 package com.lgi.theweschshop.shopdata.entity;
 
+import com.lgi.theweschshop.shopdata.enums.UserRole;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -39,6 +37,9 @@ public class User {
 
     private String avatar;
 
+    @Column(name = "user_role")
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
     public User( String id, String name, String password ) {
         this.id = id;
