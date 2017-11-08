@@ -1,7 +1,7 @@
 package com.lgi.theweschshop.shopdata.service.impl;
 
-import com.lgi.theweschshop.shopdata.dao.ElementDAO;
 import com.lgi.theweschshop.shopdata.entity.Element;
+import com.lgi.theweschshop.shopdata.repository.ElementRepository;
 import com.lgi.theweschshop.shopdata.service.ElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,11 @@ import java.util.Optional;
 public class ElementServiceImpl implements ElementService {
 
     @Autowired
-    private ElementDAO elementDAO;
+    private ElementRepository elementRepository;
 
     @Override
     public List<Element> getAllElements() {
-        List<Element> allElements = elementDAO.findAllElements();
+        List<Element> allElements = elementRepository.findAll();
         return allElements;
     }
 
@@ -29,19 +29,24 @@ public class ElementServiceImpl implements ElementService {
     @Transactional
     public void addElement( String elementName, String description ) {
         Element element = new Element( elementName, description );
-        elementDAO.persist( element );
+        elementRepository.save( element );
 
     }
 
     @Override
-    public Optional<Element> getElementById( Integer elementId ) {
-        return elementDAO.find( elementId );
+    public Optional<Element> getElementById( Long elementId ) {
+        return Optional.ofNullable( elementRepository.findOne( elementId ) );
     }
 
     @Override
     @Transactional
     public void delete( Element element ) {
-        elementDAO.remove( element );
+        elementRepository.delete( element );
     }
 
+    @Override
+    @Transactional
+    public void delete( Long id ) {
+        elementRepository.delete( id );
+    }
 }

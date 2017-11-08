@@ -6,7 +6,10 @@
 	<groupId>com.lgi</groupId>
 	<artifactId>theweschshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>liquibase</module>
+    </modules>
+    <packaging>pom</packaging>
 
 	<name>theweschshop</name>
 	<description>Demo project for Spring Boot</description>

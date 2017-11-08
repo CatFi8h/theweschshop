@@ -1,6 +1,7 @@
 package com.lgi.theweschshop.shopdata.service;
 
 import com.lgi.theweschshop.shopdata.entity.Element;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,10 @@ public interface ElementService {
 
     void addElement( String elementName, String description );
 
-    Optional<Element> getElementById( Integer elementId );
+    Optional<Element> getElementById( Long elementId );
 
     void delete( Element element );
+
+    @Transactional
+    void delete( Long id );
 }
