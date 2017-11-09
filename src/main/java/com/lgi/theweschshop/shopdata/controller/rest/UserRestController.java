@@ -1,6 +1,6 @@
 //package com.lgi.theweschshop.shopdata.controller.rest;
 //
-//import com.lgi.theweschshop.shopdata.entity.User;
+//import com.lgi.theweschshop.shopdata.entity.EUser;
 //import com.lgi.theweschshop.shopdata.service.UserService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.GetMapping;
@@ -22,25 +22,25 @@
 //    private UserService userService;
 //
 //    @GetMapping("/user/list")
-//    public List<User> getList() {
-//        List<User> userList = userService.getUserList();
+//    public List<EUser> getList() {
+//        List<EUser> userList = userService.getUserList();
 //        return userList;
 //    }
 //
 //    @PostMapping("user/add")
-//    public User addUser( @RequestParam String email,
+//    public EUser addUser( @RequestParam String email,
 //                         @RequestParam String name,
 //                         @RequestParam String surname,
 //                         @RequestParam String pass ) {
-//        User user = new User( email, name, surname, pass );
+//        EUser user = new EUser( email, name, surname, pass );
 //        userService.addUser( user );
 //        return user;
 //    }
 //
 //    @PostMapping("user/delete")
-//    public User deleteUser( @RequestParam String email ) {
-//        Optional<User> userById = userService.getUserById( email );
-//        User user = userById.orElseThrow( NoSuchElementException::new );
+//    public EUser deleteUser( @RequestParam String email ) {
+//        Optional<EUser> userById = userService.getUserById( email );
+//        EUser user = userById.orElseThrow( NoSuchElementException::new );
 //        userService.delete( user );
 //        return user;
 //    }

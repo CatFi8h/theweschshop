@@ -17,14 +17,19 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(schema = "tws_storage", name = "user")
-public class User {
+//@Table(schema = "tws_storage", name = "user")
+@Table(name = "user")
+public class EUser {
 
     @Id
+    @GeneratedValue
+    @Column(name = "uid")
+    private Long id;
+
     @Email
     @NonNull
-    @Column(name = "uid")
-    private String id;
+    @Column(unique = true)
+    private String email;
 
     private String password;
 
@@ -41,27 +46,29 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
-    public User( String id, String name, String password ) {
-        this.id = id;
+    public EUser( String email, String password, String name ) {
+        this.email = email;
         this.password = password;
         this.name = name;
     }
 
-    public User( String id,  String name, String surname, String password ) {
-        this.id = id;
+    public EUser( String email, String password, String name, String surname ) {
+        this.email = email;
+        this.password = password;
         this.name = name;
         this.surname = surname;
-        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
+        return "EUser{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", accessType='" + accessType + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", userRole=" + userRole +
                 '}';
     }
 }

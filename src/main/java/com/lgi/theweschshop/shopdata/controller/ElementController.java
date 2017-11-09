@@ -49,7 +49,7 @@ public class ElementController {
     }
 
     @PostMapping("element/delete")
-    public String delete( Model model, @RequestParam Integer elementId ) {
+    public String delete( Model model, @RequestParam Number elementId ) {
         Optional<Element> elementById = elementService.getElementById( elementId );
         Element element = elementById.orElseThrow( NoSuchElementException::new );
         elementService.delete( element );

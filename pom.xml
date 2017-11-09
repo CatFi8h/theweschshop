@@ -6,9 +6,9 @@
 	<groupId>com.lgi</groupId>
 	<artifactId>theweschshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>liquibase</module>
-    </modules>
+    <!--<modules>-->
+        <!--<module>liquibase</module>-->
+    <!--</modules>-->
     <packaging>pom</packaging>
 
 	<name>theweschshop</name>
@@ -56,6 +56,10 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
@@ -70,11 +74,6 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>0.0.20131108.vaadin1</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>

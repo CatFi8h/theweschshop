@@ -15,7 +15,7 @@ public interface ElementService {
 
     void addElement( String elementName, String description );
 
-    Optional<Element> getElementById( Long elementId );
+    Optional<Element> getElementById( Number elementId );
 
     void delete( Element element );
 

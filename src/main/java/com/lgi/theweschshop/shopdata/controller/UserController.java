@@ -1,6 +1,6 @@
 package com.lgi.theweschshop.shopdata.controller;
 
-import com.lgi.theweschshop.shopdata.entity.User;
+import com.lgi.theweschshop.shopdata.entity.EUser;
 import com.lgi.theweschshop.shopdata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -27,8 +27,8 @@ public class UserController {
 
     @GetMapping("/user/get")
     public String getUserData( Model model, Authentication principal, @RequestParam String userId ) {
-        Optional<User> userById = userService.getUserById( userId );
-        User user = userById.orElseThrow( NoSuchElementException::new );
+        Optional<EUser> userById = userService.getUserByEmail( userId );
+        EUser user = userById.orElseThrow( NoSuchElementException::new );
         model.addAttribute( "user", user.toString() );
         return "user";
     }
@@ -45,7 +45,7 @@ public class UserController {
 
     @GetMapping("/user/list")
     public String getUserList( Model model, Authentication principal ) {
-        List<User> userList = userService.getUserList();
+        List<EUser> userList = userService.getUserList();
         model.addAttribute( "userList", userList );
         model.addAttribute( "time", new Date( System.currentTimeMillis() ).toString() );
         return "users";
@@ -53,8 +53,8 @@ public class UserController {
 
     @PostMapping("/user/delete")
     public String deleteUser( Authentication principal, @RequestParam String email ) {
-        Optional<User> userById = userService.getUserById( email );
-        User user = userById.orElseThrow( NoSuchElementException::new );
+        Optional<EUser> userById = userService.getUserByEmail( email );
+        EUser user = userById.orElseThrow( NoSuchElementException::new );
         userService.delete( user );
         return "redirect:/user/list";
     }

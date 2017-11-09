@@ -34,8 +34,8 @@ public class ElementServiceImpl implements ElementService {
     }
 
     @Override
-    public Optional<Element> getElementById( Long elementId ) {
-        return Optional.ofNullable( elementRepository.findOne( elementId ) );
+    public Optional<Element> getElementById( Number elementId ) {
+        return Optional.ofNullable( elementRepository.findOne( elementId.longValue() ) );
     }
 
     @Override

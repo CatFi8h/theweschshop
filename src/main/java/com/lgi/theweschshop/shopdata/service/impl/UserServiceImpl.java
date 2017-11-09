@@ -1,7 +1,7 @@
 package com.lgi.theweschshop.shopdata.service.impl;
 
-import com.lgi.theweschshop.shopdata.dao.UserDAO;
-import com.lgi.theweschshop.shopdata.entity.User;
+import com.lgi.theweschshop.shopdata.entity.EUser;
+import com.lgi.theweschshop.shopdata.repository.UserRepository;
 import com.lgi.theweschshop.shopdata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,30 +17,30 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserDAO userDAO;
+    UserRepository userRepository;
 
     @Override
-    public Optional<User> getUserById( String id ) {
-        Optional<User> user = userDAO.find( id );
+    public Optional<EUser> getUserByEmail( String email ) {
+        Optional<EUser> user = Optional.ofNullable( userRepository.findEUserByEmail( email ) );
         return user;
     }
 
     @Override
     @Transactional
     public void addUser( String email, String userName, String password ) {
-        User user = new User( email, userName, password );
-        userDAO.persist( user );
+        EUser user = new EUser( email, userName, password );
+        userRepository.save( user );
     }
 
     @Override
-    public List<User> getUserList() {
-        return userDAO.getAllUsers();
+    public List<EUser> getUserList() {
+        return userRepository.findAll();
     }
 
     @Override
     @Transactional
-    public void delete( User user ) {
-        userDAO.remove( user );
+    public void delete( EUser user ) {
+        userRepository.delete( user );
     }
 
 }

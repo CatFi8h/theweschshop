@@ -1,6 +1,6 @@
 package com.lgi.theweschshop.shopdata.service;
 
-import com.lgi.theweschshop.shopdata.entity.User;
+import com.lgi.theweschshop.shopdata.entity.EUser;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
@@ -11,15 +11,15 @@ import java.util.Optional;
  */
 public interface UserService {
 
-    Optional<User> getUserById( String id );
+    Optional<EUser> getUserByEmail( String email );
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     void addUser( String email, String userName, String password );
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    List<User> getUserList();
+    List<EUser> getUserList();
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    void delete( User user );
+    void delete( EUser user );
 
 }
