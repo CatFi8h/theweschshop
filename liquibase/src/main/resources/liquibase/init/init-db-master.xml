@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1colorTable">
+        <createTable tableName="colorTable">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1">
+        <createSequence catalogName="colorTable" incrementBy="1"
+                        maxValue="9223372036854775807"
+                        minValue="1"
+                        ordered="true"
+                        sequenceName="color_seq_id"
+                        startValue="1"/>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1sizeTable">
+        <createTable tableName="sizeTable">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1">
+        <createSequence catalogName="sizeTable" incrementBy="1"
+                        maxValue="9223372036854775807"
+                        minValue="1"
+                        ordered="true"
+                        sequenceName="size_seq_id"
+                        startValue="1"/>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1typeTable">
+        <createTable tableName="typeTable">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1pictureTable">
+        <createTable tableName="pictureTable">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture" type="bytea">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1">
+        <createSequence catalogName="typeTable" incrementBy="1"
+                        maxValue="9223372036854775807"
+                        minValue="1"
+                        ordered="true"
+                        sequenceName="type_seq_id"
+                        startValue="1"/>
+    </changeSet>
+
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1elementTable">
+        <createTable tableName="elementTable">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1">
+        <createSequence catalogName="elementTable" incrementBy="1"
+                        maxValue="9223372036854775807"
+                        minValue="1"
+                        ordered="true"
+                        sequenceName="element_seq_id"
+                        startValue="1"/>
+    </changeSet>
+
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1elementSizeTypeColorTable">
+        <createTable tableName="element_size_type_color">
+            <column name="elementId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sizeId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="typeId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="colorId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorElement">
+        <addForeignKeyConstraint constraintName="fk_ec_element"
+                                 baseTableName="element_color" baseColumnNames="elementId" referencedTableName="elementTable"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementSizeColor">
+        <addForeignKeyConstraint constraintName="fk_ec_color"
+                                 baseTableName="element_color" baseColumnNames="colorId" referencedTableName="colorType"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorColor">
+        <addForeignKeyConstraint constraintName="fk_ec_color"
+                                 baseTableName="element_color" baseColumnNames="colorId" referencedTableName="colorType"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorColor">
+        <addForeignKeyConstraint constraintName="fk_ec_color"
+                                 baseTableName="element_color" baseColumnNames="colorId" referencedTableName="colorType"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1elementColorTable">
+        <createTable tableName="element_color">
+            <column name="elementId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="colorId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorElement">
+        <addForeignKeyConstraint constraintName="fk_ec_element"
+                                 baseTableName="element_color" baseColumnNames="elementId" referencedTableName="elementTable"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorColor">
+        <addForeignKeyConstraint constraintName="fk_ec_color"
+                                 baseTableName="element_color" baseColumnNames="colorId" referencedTableName="colorType"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <!--<**********************************************************>-->
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1elementSizeTable">
+        <createTable tableName="element_size">
+            <column name="elementId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sizeId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementSizeElement">
+        <addForeignKeyConstraint constraintName="fk_es_element"
+                                 baseTableName="element_size" baseColumnNames="elementId" referencedTableName="element"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementSizeSize">
+        <addForeignKeyConstraint constraintName="fk_es_size"
+                                 baseTableName="element_size" baseColumnNames="sizeId" referencedTableName="sizeTable"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <!--<**********************************************************>-->
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1elementTypeTable">
+        <createTable tableName="element_type">
+            <column name="elementId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="typeId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementTypeElement">
+        <addForeignKeyConstraint constraintName="fk_et_element"
+                                 baseTableName="element_type" baseColumnNames="elementId" referencedTableName="element"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementTypeType">
+        <addForeignKeyConstraint constraintName="fk_et_type"
+                                 baseTableName="element_type" baseColumnNames="typeId" referencedTableName="typeTable"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <!--<**********************************************************>-->
+
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1elementPictureTable">
+        <createTable tableName="element_picture">
+            <column name="elementId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementPictureElement">
+        <addForeignKeyConstraint constraintName="fk_ep_element"
+                                 baseTableName="element_picture" baseColumnNames="elementId" referencedTableName="elementTable"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementPicturePicture">
+        <addForeignKeyConstraint constraintName="fk_ep_picture"
+                                 baseTableName="element_picture" baseColumnNames="pictureId" referencedTableName="pictureTable"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <!--<**********************************************************>-->
+
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1">
+        <createTable tableName="emr">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="emrDate" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emrTypeId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patientId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="doctorId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1">
+        <createSequence catalogName="emr" incrementBy="1"
+                        maxValue="9223372036854775807"
+                        minValue="1"
+                        ordered="true"
+                        sequenceName="emr_seq_id"
+                        startValue="1"/>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1fkEMRDoctor">
+        <addForeignKeyConstraint constraintName="fk_emr_doctor"
+                                 baseTableName="emr" baseColumnNames="doctorId" referencedTableName="doctor"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1fkEMRPatient">
+        <addForeignKeyConstraint constraintName="fk_emr_patient"
+                                 baseTableName="emr" baseColumnNames="patientId" referencedTableName="patient"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1fkEMREMRType">
+        <addForeignKeyConstraint constraintName="fk_emr_emrType"
+                                 baseTableName="emr" baseColumnNames="emrTypeId" referencedTableName="emrType"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultEMRTypes" context="TEST">
+        <insert tableName="emrType">
+            <column name="name" value="эпикриз" type="varchar"/>
+        </insert>
+        <insert tableName="emrType">
+            <column name="name" value="диагноз" type="varchar"/>
+        </insert>
+        <insert tableName="emrType">
+            <column name="name" value="назначение" type="varchar"/>
+        </insert>
+        <insert tableName="emrType">
+            <column name="name" value="результат исследования" type="varchar"/>
+        </insert>
+        <insert tableName="emrType">
+            <column name="name" value="результат оперативного вмешательства" type="varchar"/>
+        </insert>
+        <insert tableName="emrType">
+            <column name="name" value="сигнальная информация" type="varchar"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultDoctors" context="TEST">
+        <insert tableName="doctor">
+            <column name="name" value="House" type="varchar"/>
+        </insert>
+        <insert tableName="doctor">
+            <column name="name" value="Wilson" type="varchar"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultPatients" context="TEST">
+        <insert tableName="patient">
+            <column name="pinfl" value="1" type="bigint"/>
+            <column name="emcId" value="emk1" type="varchar"/>
+            <column name="fullName" value="Tsybrii Elena Yuriivna" type="varchar"/>
+            <column name="gender" value="female" type="varchar"/>
+            <column name="birthDate" valueDate="1988-08-18T08:42:00"/>
+        </insert>
+        <insert tableName="patient">
+            <column name="pinfl" value="2" type="bigint"/>
+            <column name="emcId" value="emk2" type="varchar"/>
+            <column name="fullName" value="Uvarov Yurii Anatolievich" type="varchar"/>
+            <column name="gender" value="male" type="varchar"/>
+            <column name="birthDate" valueDate="1988-05-22T05:52:00"/>
+        </insert>
+        <insert tableName="patient">
+            <column name="pinfl" value="3" type="bigint"/>
+            <column name="emcId" value="emk3" type="varchar"/>
+            <column name="fullName" value="Istochnikov Vsevolod" type="varchar"/>
+            <column name="gender" value="male" type="varchar"/>
+            <column name="birthDate" valueDate="1975-02-05T06:42:00"/>
+        </insert>
+        <insert tableName="patient">
+            <column name="pinfl" value="4" type="bigint"/>
+            <column name="emcId" value="emk4" type="varchar"/>
+            <column name="fullName" value="Yurchenko Igor" type="varchar"/>
+            <column name="gender" value="male" type="varchar"/>
+            <column name="birthDate" valueDate="1984-06-06T10:42:00"/>
+        </insert>
+        <insert tableName="patient">
+            <column name="pinfl" value="5" type="bigint"/>
+            <column name="emcId" value="emk5" type="varchar"/>
+            <column name="fullName" value="Bolnoi" type="varchar"/>
+            <column name="gender" value="male" type="varchar"/>
+            <column name="birthDate" valueDate="1984-06-06T10:42:00"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultDoctorsPatients" context="TEST">
+        <insert tableName="doctor_patient">
+            <column name="patientId" value="1" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="doctor_patient">
+            <column name="patientId" value="3" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="doctor_patient">
+            <column name="patientId" value="2" type="bigint"/>
+            <column name="doctorId" value="2" type="bigint"/>
+        </insert>
+        <insert tableName="doctor_patient">
+            <column name="patientId" value="4" type="bigint"/>
+            <column name="doctorId" value="2" type="bigint"/>
+        </insert>
+        <insert tableName="doctor_patient">
+            <column name="patientId" value="5" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="doctor_patient">
+            <column name="patientId" value="5" type="bigint"/>
+            <column name="doctorId" value="2" type="bigint"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultEMRs" context="TEST">
+        <insert tableName="emr">
+            <column name="emrTypeId" value="1" type="bigint"/>
+            <column name="emrDate" valueDate="2017-06-06T10:42:00"/>
+            <column name="patientId" value="1" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="emr">
+            <column name="emrTypeId" value="3" type="bigint"/>
+            <column name="emrDate" valueDate="2017-06-07T10:42:00"/>
+            <column name="patientId" value="1" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="emr">
+            <column name="emrTypeId" value="2" type="bigint"/>
+            <column name="emrDate" valueDate="2017-06-08T10:42:00"/>
+            <column name="patientId" value="3" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="emr">
+            <column name="emrTypeId" value="4" type="bigint"/>
+            <column name="emrDate" valueDate="2017-06-09T10:42:00"/>
+            <column name="patientId" value="3" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="emr">
+            <column name="emrTypeId" value="5" type="bigint"/>
+            <column name="emrDate" valueDate="2017-06-10T10:42:00"/>
+            <column name="patientId" value="5" type="bigint"/>
+            <column name="doctorId" value="1" type="bigint"/>
+        </insert>
+        <insert tableName="emr">
+            <column name="emrTypeId" value="2" type="bigint"/>
+            <column name="emrDate" valueDate="2017-06-11T10:42:00"/>
+            <column name="patientId" value="2" type="bigint"/>
+            <column name="doctorId" value="2" type="bigint"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

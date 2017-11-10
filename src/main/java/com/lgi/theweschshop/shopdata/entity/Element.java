@@ -1,6 +1,7 @@
 package com.lgi.theweschshop.shopdata.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lgi.theweschshop.shopdata.domain.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +27,9 @@ public class Element {
 
     private String description;
 
-    private String comments;
+    private String comment;
+
+    private Gender gender;
 
     @Column(name = "creation_date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -35,7 +38,7 @@ public class Element {
     @ManyToMany
     @JsonIgnore
     @JoinTable(
-            name = "element_type_synthetic",
+            name = "element_type",
             joinColumns = {@JoinColumn(name = "element_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "type_id", referencedColumnName = "tid")}
     )
@@ -48,7 +51,7 @@ public class Element {
     @ManyToMany
     @JsonIgnore
     @JoinTable(
-            name = "element_size_synthetic",
+            name = "element_size",
             joinColumns = {@JoinColumn(name = "element_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "size_id", referencedColumnName = "sid")}
     )
@@ -57,7 +60,7 @@ public class Element {
     @ManyToMany
     @JsonIgnore
     @JoinTable(
-            name = "element_color_synthetic",
+            name = "element_color",
             joinColumns = {@JoinColumn(name = "element_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "color_id", referencedColumnName = "cid")}
     )
