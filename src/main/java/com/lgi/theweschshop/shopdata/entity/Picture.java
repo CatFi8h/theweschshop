@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "picture")
+@Table(schema = "tws_storage", name = "pictureTable")
 public class Picture {
 
     @Id

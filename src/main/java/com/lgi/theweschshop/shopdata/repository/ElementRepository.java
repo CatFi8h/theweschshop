@@ -1,9 +1,9 @@
 package com.lgi.theweschshop.shopdata.repository;
 
-import com.lgi.theweschshop.shopdata.domain.Size;
 import com.lgi.theweschshop.shopdata.entity.Color;
 import com.lgi.theweschshop.shopdata.entity.Element;
 import com.lgi.theweschshop.shopdata.entity.Type;
+import com.lgi.theweschshop.shopdata.enums.Size;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

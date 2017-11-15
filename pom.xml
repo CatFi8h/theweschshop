@@ -6,9 +6,6 @@
 	<groupId>com.lgi</groupId>
 	<artifactId>theweschshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-    <!--<modules>-->
-        <!--<module>liquibase</module>-->
-    <!--</modules>-->
     <packaging>pom</packaging>
 
 	<name>theweschshop</name>
@@ -26,6 +23,30 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/dev</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>release</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources/release</directory>
+					</resource>
+				</resources>
+			</build>
+
+		</profile>
+	</profiles>
 
 	<dependencies>
 		<dependency>

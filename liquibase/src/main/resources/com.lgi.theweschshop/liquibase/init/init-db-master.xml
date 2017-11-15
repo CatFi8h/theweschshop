@@ -116,16 +116,16 @@
     <!--<**********************************************************>-->
     <changeSet author="iyurchenko" id="lgi_database:release_1.1elementSizeTypeColorTable">
         <createTable tableName="element_size_type_color">
-            <column name="elementId" type="bigint">
+            <column name="element_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="sizeId" type="bigint">
+            <column name="size_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="typeId" type="bigint">
+            <column name="type_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="colorId" type="bigint">
+            <column name="color_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="amount" type="bigint">
@@ -133,24 +133,24 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorElement">
-        <addForeignKeyConstraint constraintName="fk_ec_element"
-                                 baseTableName="element_color" baseColumnNames="elementId" referencedTableName="elementTable"
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementElementElement">
+        <addForeignKeyConstraint constraintName="fk_estc_element"
+                                 baseTableName="element_size_type_color" baseColumnNames="element_id" referencedTableName="elementTable"
                                  referencedColumnNames="id"/>
     </changeSet>
     <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementSizeColor">
-        <addForeignKeyConstraint constraintName="fk_ec_color"
-                                 baseTableName="element_color" baseColumnNames="colorId" referencedTableName="colorType"
+        <addForeignKeyConstraint constraintName="fk_estc_size"
+                                 baseTableName="element_size_type_color" baseColumnNames="size_id" referencedTableName="sizeTable"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementTypeElement">
+        <addForeignKeyConstraint constraintName="fk_estc_type"
+                                 baseTableName="element_size_type_color" baseColumnNames="type_id" referencedTableName="typeTable"
                                  referencedColumnNames="id"/>
     </changeSet>
     <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorColor">
-        <addForeignKeyConstraint constraintName="fk_ec_color"
-                                 baseTableName="element_color" baseColumnNames="colorId" referencedTableName="colorType"
-                                 referencedColumnNames="id"/>
-    </changeSet>
-    <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementColorColor">
-        <addForeignKeyConstraint constraintName="fk_ec_color"
-                                 baseTableName="element_color" baseColumnNames="colorId" referencedTableName="colorType"
+        <addForeignKeyConstraint constraintName="fk_estc_color"
+                                 baseTableName="element_size_type_color" baseColumnNames="color_id" referencedTableName="colorTable"
                                  referencedColumnNames="id"/>
     </changeSet>
     <!--<**********************************************************>-->
@@ -189,7 +189,7 @@
     </changeSet>
     <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementSizeElement">
         <addForeignKeyConstraint constraintName="fk_es_element"
-                                 baseTableName="element_size" baseColumnNames="elementId" referencedTableName="element"
+                                 baseTableName="element_size" baseColumnNames="elementId" referencedTableName="elementTable"
                                  referencedColumnNames="id"/>
     </changeSet>
     <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementSizeSize">
@@ -212,7 +212,7 @@
     </changeSet>
     <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementTypeElement">
         <addForeignKeyConstraint constraintName="fk_et_element"
-                                 baseTableName="element_type" baseColumnNames="elementId" referencedTableName="element"
+                                 baseTableName="element_type" baseColumnNames="elementId" referencedTableName="elementTable"
                                  referencedColumnNames="id"/>
     </changeSet>
     <changeSet author="iyurchenko" id="lgi_database:release_1.1fkElementTypeType">
@@ -292,139 +292,7 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
-    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultEMRTypes" context="TEST">
-        <insert tableName="emrType">
-            <column name="name" value="эпикриз" type="varchar"/>
-        </insert>
-        <insert tableName="emrType">
-            <column name="name" value="диагноз" type="varchar"/>
-        </insert>
-        <insert tableName="emrType">
-            <column name="name" value="назначение" type="varchar"/>
-        </insert>
-        <insert tableName="emrType">
-            <column name="name" value="результат исследования" type="varchar"/>
-        </insert>
-        <insert tableName="emrType">
-            <column name="name" value="результат оперативного вмешательства" type="varchar"/>
-        </insert>
-        <insert tableName="emrType">
-            <column name="name" value="сигнальная информация" type="varchar"/>
-        </insert>
-    </changeSet>
 
-    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultDoctors" context="TEST">
-        <insert tableName="doctor">
-            <column name="name" value="House" type="varchar"/>
-        </insert>
-        <insert tableName="doctor">
-            <column name="name" value="Wilson" type="varchar"/>
-        </insert>
-    </changeSet>
-
-    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultPatients" context="TEST">
-        <insert tableName="patient">
-            <column name="pinfl" value="1" type="bigint"/>
-            <column name="emcId" value="emk1" type="varchar"/>
-            <column name="fullName" value="Tsybrii Elena Yuriivna" type="varchar"/>
-            <column name="gender" value="female" type="varchar"/>
-            <column name="birthDate" valueDate="1988-08-18T08:42:00"/>
-        </insert>
-        <insert tableName="patient">
-            <column name="pinfl" value="2" type="bigint"/>
-            <column name="emcId" value="emk2" type="varchar"/>
-            <column name="fullName" value="Uvarov Yurii Anatolievich" type="varchar"/>
-            <column name="gender" value="male" type="varchar"/>
-            <column name="birthDate" valueDate="1988-05-22T05:52:00"/>
-        </insert>
-        <insert tableName="patient">
-            <column name="pinfl" value="3" type="bigint"/>
-            <column name="emcId" value="emk3" type="varchar"/>
-            <column name="fullName" value="Istochnikov Vsevolod" type="varchar"/>
-            <column name="gender" value="male" type="varchar"/>
-            <column name="birthDate" valueDate="1975-02-05T06:42:00"/>
-        </insert>
-        <insert tableName="patient">
-            <column name="pinfl" value="4" type="bigint"/>
-            <column name="emcId" value="emk4" type="varchar"/>
-            <column name="fullName" value="Yurchenko Igor" type="varchar"/>
-            <column name="gender" value="male" type="varchar"/>
-            <column name="birthDate" valueDate="1984-06-06T10:42:00"/>
-        </insert>
-        <insert tableName="patient">
-            <column name="pinfl" value="5" type="bigint"/>
-            <column name="emcId" value="emk5" type="varchar"/>
-            <column name="fullName" value="Bolnoi" type="varchar"/>
-            <column name="gender" value="male" type="varchar"/>
-            <column name="birthDate" valueDate="1984-06-06T10:42:00"/>
-        </insert>
-    </changeSet>
-
-    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultDoctorsPatients" context="TEST">
-        <insert tableName="doctor_patient">
-            <column name="patientId" value="1" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="doctor_patient">
-            <column name="patientId" value="3" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="doctor_patient">
-            <column name="patientId" value="2" type="bigint"/>
-            <column name="doctorId" value="2" type="bigint"/>
-        </insert>
-        <insert tableName="doctor_patient">
-            <column name="patientId" value="4" type="bigint"/>
-            <column name="doctorId" value="2" type="bigint"/>
-        </insert>
-        <insert tableName="doctor_patient">
-            <column name="patientId" value="5" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="doctor_patient">
-            <column name="patientId" value="5" type="bigint"/>
-            <column name="doctorId" value="2" type="bigint"/>
-        </insert>
-    </changeSet>
-
-    <changeSet author="iyurchenko" id="whirl_database:release_1.1DefaultEMRs" context="TEST">
-        <insert tableName="emr">
-            <column name="emrTypeId" value="1" type="bigint"/>
-            <column name="emrDate" valueDate="2017-06-06T10:42:00"/>
-            <column name="patientId" value="1" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="emr">
-            <column name="emrTypeId" value="3" type="bigint"/>
-            <column name="emrDate" valueDate="2017-06-07T10:42:00"/>
-            <column name="patientId" value="1" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="emr">
-            <column name="emrTypeId" value="2" type="bigint"/>
-            <column name="emrDate" valueDate="2017-06-08T10:42:00"/>
-            <column name="patientId" value="3" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="emr">
-            <column name="emrTypeId" value="4" type="bigint"/>
-            <column name="emrDate" valueDate="2017-06-09T10:42:00"/>
-            <column name="patientId" value="3" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="emr">
-            <column name="emrTypeId" value="5" type="bigint"/>
-            <column name="emrDate" valueDate="2017-06-10T10:42:00"/>
-            <column name="patientId" value="5" type="bigint"/>
-            <column name="doctorId" value="1" type="bigint"/>
-        </insert>
-        <insert tableName="emr">
-            <column name="emrTypeId" value="2" type="bigint"/>
-            <column name="emrDate" valueDate="2017-06-11T10:42:00"/>
-            <column name="patientId" value="2" type="bigint"/>
-            <column name="doctorId" value="2" type="bigint"/>
-        </insert>
-    </changeSet>
 
 
 </databaseChangeLog>

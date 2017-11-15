@@ -1,6 +1,6 @@
 package com.lgi.theweschshop.shopdata.entity;
 
-import com.lgi.theweschshop.shopdata.domain.Size;
+import com.lgi.theweschshop.shopdata.enums.Size;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "e_size")
+@Table(schema = "tws_storage", name = "sizeTable")
 public class SizeEntity {
 
     @Id
@@ -25,4 +25,7 @@ public class SizeEntity {
     private Size size;
 
 
+    public SizeEntity( Size size ) {
+        this.size = size;
+    }
 }

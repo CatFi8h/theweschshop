@@ -1,4 +1,4 @@
-package com.lgi.theweschshop.shopdata.domain;
+package com.lgi.theweschshop.shopdata.enums;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.

@@ -5,6 +5,7 @@ import com.lgi.theweschshop.shopdata.service.ElementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class ElementController {
     }
 
     @GetMapping("/element/list")
-    public String list( Model model ) {
+    public String list( Pageable pageable, Model model ) {
         List<Element> allElements = elementService.getAllElements();
         model.addAttribute( "elements", allElements );
         return "admina";

@@ -1,7 +1,7 @@
 package com.lgi.theweschshop.shopdata.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.lgi.theweschshop.shopdata.domain.Gender;
+import com.lgi.theweschshop.shopdata.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "element")
+@Table(schema = "tws_storage", name = "elementTable")
 public class Element {
 
     @Id
@@ -66,9 +66,25 @@ public class Element {
     )
     private Set<Color> color;
 
+    public Element( String name, String description, Type type, Color white, SizeEntity sizeEntity, Gender male  ) {
+        this.name = name;
+        this.description = description;
+        this.comment = "";
+        this.gender = male;
+        this.creationDate = new Date();
+        this.type.add( type );
+        this.picture = null;
+        this.sizeEntities.add( sizeEntity );
+        this.color.add( white );
+    }
 
-    public Element( String elementName, String description ) {
-        this.name = elementName;
+    public Element( String name, String description ) {
+        this.name = name;
         this.description = description;
     }
+
+//    public Element( String elementName, String description, Type type, Color white, SizeEntity sizeEntity, Gender male ) {
+//        this.name = elementName;
+//        this.description = description;
+//    }
 }

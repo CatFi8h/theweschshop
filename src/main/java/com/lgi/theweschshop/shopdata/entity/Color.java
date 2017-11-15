@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "color")
+@Table(schema = "tws_storage", name = "colorTable")
 public class Color {
 
     @Id
@@ -28,4 +28,7 @@ public class Color {
     private String gradient;
 
 
+    public Color( String colorName ) {
+        this.colorName = colorName;
+    }
 }
