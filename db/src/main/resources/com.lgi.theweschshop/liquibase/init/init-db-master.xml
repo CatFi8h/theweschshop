@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_1">
+        <createTable schemaName="lgi_storage" tableName="color_table">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!--<changeSet author="iyurchenko" id="lgi_database-changeset_2">-->
+        <!--<createSequence catalogName="colorTable" incrementBy="1"-->
+                        <!--maxValue="9223372036854775807"-->
+                        <!--minValue="1"-->
+                        <!--ordered="true"-->
+                        <!--sequenceName="color_seq_id"-->
+                        <!--startValue="1"/>-->
+    <!--</changeSet>-->
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_3">
+        <createTable schemaName="lgi_storage"  tableName="size_table">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!--<changeSet author="iyurchenko" id="lgi_database-changeset_4">-->
+        <!--<createSequence schemaName="lgi_storage"   catalogName="sizeTable" incrementBy="1"-->
+                        <!--maxValue="9223372036854775807"-->
+                        <!--minValue="1"-->
+                        <!--ordered="true"-->
+                        <!--sequenceName="size_seq_id"-->
+                        <!--startValue="1"/>-->
+    <!--</changeSet>-->
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_5">
+        <createTable schemaName="lgi_storage"  tableName="type_table">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_6">
+        <createTable schemaName="lgi_storage"  tableName="picture_table">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture" type="bytea">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!--<changeSet author="iyurchenko" id="lgi_database-changeset_7">-->
+        <!--<createSequence schemaName="lgi_storage"   catalogName="typeTable" incrementBy="1"-->
+                        <!--maxValue="9223372036854775807"-->
+                        <!--minValue="1"-->
+                        <!--ordered="true"-->
+                        <!--sequenceName="type_seq_id"-->
+                        <!--startValue="1"/>-->
+    <!--</changeSet>-->
+
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_8">
+        <createTable schemaName="lgi_storage"  tableName="element_table">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!--<changeSet author="iyurchenko" id="lgi_database-changeset_9">-->
+        <!--<createSequence schemaName="lgi_storage"   catalogName="elementTable" incrementBy="1"-->
+                        <!--maxValue="9223372036854775807"-->
+                        <!--minValue="1"-->
+                        <!--ordered="true"-->
+                        <!--sequenceName="element_seq_id"-->
+                        <!--startValue="1"/>-->
+    <!--</changeSet>-->
+
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+    <changeSet author="iyurchenko" id="lgi_database-changeset_10">
+        <createTable schemaName="lgi_storage"  tableName="element_size_type_color">
+            <column name="element_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="size_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_11">
+        <addForeignKeyConstraint constraintName="fk_estc_element" baseTableSchemaName="lgi_storage"
+                                 baseTableName="element_size_type_color" baseColumnNames="element_id" referencedTableSchemaName="lgi_storage" referencedTableName="element_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_12">
+        <addForeignKeyConstraint constraintName="fk_estc_size" baseTableSchemaName="lgi_storage"
+                                 baseTableName="element_size_type_color" baseColumnNames="size_id" referencedTableSchemaName="lgi_storage" referencedTableName="size_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_13">
+        <addForeignKeyConstraint constraintName="fk_estc_type" baseTableSchemaName="lgi_storage"
+                                 baseTableName="element_size_type_color" baseColumnNames="type_id" referencedTableSchemaName="lgi_storage" referencedTableName="type_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_14">
+        <addForeignKeyConstraint constraintName="fk_estc_color" baseTableSchemaName="lgi_storage"
+                                 baseTableName="element_size_type_color" baseColumnNames="color_id" referencedTableSchemaName="lgi_storage" referencedTableName="color_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_15">
+        <createTable schemaName="lgi_storage"  tableName="element_color">
+            <column name="element_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_16">
+        <addForeignKeyConstraint constraintName="fk_ec_element" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_color" baseColumnNames="element_id" referencedTableName="element_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_17">
+        <addForeignKeyConstraint constraintName="fk_ec_color" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_color" baseColumnNames="color_id" referencedTableName="color_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <!--<**********************************************************>-->
+    <changeSet author="iyurchenko" id="lgi_database-changeset_18">
+        <createTable schemaName="lgi_storage"  tableName="element_size">
+            <column name="element_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="size_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_19">
+        <addForeignKeyConstraint constraintName="fk_es_element" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_size" baseColumnNames="element_id" referencedTableName="element_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_20">
+        <addForeignKeyConstraint constraintName="fk_es_size" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_size" baseColumnNames="size_id" referencedTableName="size_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <!--<**********************************************************>-->
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_21">
+        <createTable schemaName="lgi_storage"  tableName="element_type">
+            <column name="element_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_22">
+        <addForeignKeyConstraint constraintName="fk_et_element" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_type" baseColumnNames="element_id" referencedTableName="element_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_23">
+        <addForeignKeyConstraint constraintName="fk_et_type" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_type" baseColumnNames="type_id" referencedTableName="type_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <!--<**********************************************************>-->
+
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_24">
+        <createTable schemaName="lgi_storage"  tableName="element_picture">
+           <column name="element_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_25">
+        <addForeignKeyConstraint constraintName="fk_ep_element" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_picture" baseColumnNames="element_id" referencedTableName="element_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_26">
+        <addForeignKeyConstraint constraintName="fk_ep_picture" baseTableSchemaName="lgi_storage" referencedTableSchemaName="lgi_storage"
+                                 baseTableName="element_picture" baseColumnNames="picture_id" referencedTableName="picture_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+    <!--<**********************************************************>-->
+
+
+    <!--<changeSet author="iyurchenko" id="lgi_database-changeset_28">-->
+        <!--<createSequence schemaName="lgi_storage"   catalogName="emr" incrementBy="1"-->
+                        <!--maxValue="9223372036854775807"-->
+                        <!--minValue="1"-->
+                        <!--ordered="true"-->
+                        <!--sequenceName="emr_seq_id"-->
+                        <!--startValue="1"/>-->
+    <!--</changeSet>-->
+
+
+
+
+
+</databaseChangeLog>
