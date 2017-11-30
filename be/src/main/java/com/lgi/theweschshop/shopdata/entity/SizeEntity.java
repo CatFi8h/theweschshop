@@ -13,15 +13,17 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "sizeTable")
+@Table(schema = "tws_storage", name = "size_table")
 public class SizeEntity {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long sid;
 
     @NonNull
     @Enumerated(EnumType.STRING)
+    @Column(name = "name")
     private Size size;
 
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="iyurchenko" id="2017-11-28--01.1-fill-table-data.xml" context="TEST">
+        <sqlFile relativeToChangelogFile="true" encoding="utf8" path="sql/fill-color-table.sql"></sqlFile>
+    </changeSet>
+    <changeSet author="iyurchenko" id="2017-11-28--01.2-fill-table-data.xml" context="TEST">
+        <sqlFile relativeToChangelogFile="true" encoding="utf8" path="sql/fill-size-table.sql"></sqlFile>
+    </changeSet>
+    <changeSet author="iyurchenko" id="2017-11-28--01.3-fill-table-data.xml" context="TEST">
+        <sqlFile relativeToChangelogFile="true" encoding="utf8" path="sql/fill-type-table.sql"></sqlFile>
+    </changeSet>
+    <changeSet author="iyurchenko" id="2017-11-28--01.4-fill-table-data.xml" context="TEST">
+        <sqlFile relativeToChangelogFile="true" encoding="utf8" path="sql/fill-element-table.sql"></sqlFile>
+    </changeSet>
+    <changeSet author="iyurchenko" id="2017-11-28--01.5-fill-table-data.xml" context="TEST">
+        <sqlFile relativeToChangelogFile="true" encoding="utf8" path="sql/fill-element-size-type-color-amount.sql"></sqlFile>
+    </changeSet>
+
+</databaseChangeLog>

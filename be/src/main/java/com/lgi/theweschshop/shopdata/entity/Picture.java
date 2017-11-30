@@ -12,14 +12,15 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "pictureTable")
+@Table(schema = "tws_storage", name = "picture_table")
 public class Picture {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long pid;
 
-    @Column(name = "picture_name")
+    @Column(name = "name")
     private String pictureName;
 
     @Lob

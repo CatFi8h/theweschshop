@@ -23,6 +23,7 @@ public class ElementSizeColorTypeEntity {
     @Column(name = "color_id")
     private Color color;
 
+    @Column(name = "amount")
     private Long amount;
 
 }

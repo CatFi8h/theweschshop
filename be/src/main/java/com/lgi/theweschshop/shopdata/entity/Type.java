@@ -14,14 +14,15 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(schema = "tws_storage", name = "typeTable")
+@Table(schema = "tws_storage", name = "type_table")
 public class Type {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long tid;
 
-    @Column(name = "type_name")
+    @Column(name = "name")
     private String typeName;
 
     public Type( String typeName ) {

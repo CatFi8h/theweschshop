@@ -42,8 +42,14 @@ public class ElementControllerTest {
     @Test
     public void getElementListTest() throws Exception {
 
-        Element element = new Element( "Shirt Bear", "Shirt with teddy bear", new Type( "Shirt" ),
-                new Color( "white" ), new SizeEntity( Size.XL ), Gender.male );
+        Element element = new Element( "Shirt Bear", "Shirt with teddy bear" );
+//                new Type( "Shirt" ),
+//                new Color( "white" ), new SizeEntity( Size.XL ), Gender.male );
+        element.setType( new Type( "Shirt" ) );
+        element.setColor( new Color( "white" ) );
+        element.setSizeEntities( new SizeEntity( Size.XL ) );
+        element.setGender( Gender.male );
+
         List<Element> elements = new ArrayList<>();
         elements.add( element );
 

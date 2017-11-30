@@ -5,8 +5,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <include relativeToChangelogFile="true" file="init/init-db-master.xml"/>
-    <include relativeToChangelogFile="true" file="init/db-modification/db-modification-cumulative.xml"/>
-    <!--<include relativeToChangelogFile="true" file="qa/qa-cumulative.xml"/>-->
-    <!--<include relativeToChangelogFile="true" file="patches/patches-cumulative.xml"/>-->
+
+    <include relativeToChangelogFile="true" file="2017-11-28--01-fill-table-data.xml"/>
+
 </databaseChangeLog>

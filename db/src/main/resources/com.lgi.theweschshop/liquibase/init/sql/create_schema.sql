@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT EXISTS tws_storage AUTHORIZATION tws_server

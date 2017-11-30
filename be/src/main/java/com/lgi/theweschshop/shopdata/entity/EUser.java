@@ -17,8 +17,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-//@Table(schema = "tws_storage", name = "user")
-@Table(name = "user")
+@Table(schema = "tws_storage", name = "user")
 public class EUser {
 
     @Id

@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,19 +16,24 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(schema = "tws_storage", name = "elementTable")
+@Table(schema = "tws_storage", name = "element_table")
 public class Element {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "comment")
     private String comment;
 
+    @Column(name = "gender")
     private Gender gender;
 
     @Column(name = "creation_date")
