@@ -1,6 +1,8 @@
 package com.lgi.theweschshop.shopdata.service;
 
 import com.lgi.theweschshop.shopdata.entity.Element;
+import com.lgi.theweschshop.shopdata.entity.Type;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -13,7 +15,9 @@ public interface ElementService {
 
     List<Element> getAllElements();
 
-    void addElement( String elementName, String description );
+    List<Element> getElementsListByType( Type type, Pageable pageable );
+
+    Element addElement( String elementName, String description );
 
     Optional<Element> getElementById( Number elementId );
 
@@ -21,4 +25,5 @@ public interface ElementService {
 
     @Transactional
     void delete( Long id );
+
 }

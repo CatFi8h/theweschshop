@@ -125,6 +125,10 @@
     <!--<**********************************************************>-->
     <changeSet author="iyurchenko" id="lgi_database-changeset_10">
         <createTable schemaName="tws_storage" tableName="element_size_type_color">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
             <column name="element_id" type="bigint">
                 <constraints nullable="false"/>
             </column>

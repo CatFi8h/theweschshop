@@ -48,12 +48,13 @@ public class Element {
     private Set<Picture> picture;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinTable(name = "catalog", joinColumns = @JoinColumn(name = ""))
+//    @JoinTable(name = "element_size_type_color", joinColumns = @JoinColumn(name = "element_id"),
+//            inverseJoinColumns = @JoinColumn(name = "size_id"))
     private SizeEntity sizeEntities;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private Color color;
 

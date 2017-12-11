@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Blog</title>
+    <meta charset="UTF-8"/>
+    <title>The Wesch' Shop</title>
 </head>
 
 <body>
-<h1>Welcome to Spring MVC</h1>
-Now is: <b th:text="${execInfo.now.time}"></b>
+
+<div class="header">
+    <img class="logo" src="pictures/wesch_log.png"/>
+</div>
+
+<div class="index_body">
+    <a href="shop.html">
+        <img class="image_shop" src="pictures/shop_now.jpeg"/>
+    </a>
+    <h1 class="text">Welcome to The Wesch` Shop</h1>
+</div>
+
+<!--Now is: <b th:text="${execInfo.now.time}"></b>-->
 <!--Elements in system : <b th:text="${elements}"</b>-->
+<div class="footer">
+    SN Login here
+</div>
+
+<link rel="stylesheet" type="text/css" href="style/shop.css">
 </body>
 
 </html>

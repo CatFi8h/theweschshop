@@ -1,9 +1,11 @@
 package com.lgi.theweschshop.shopdata.service.impl;
 
 import com.lgi.theweschshop.shopdata.entity.Element;
+import com.lgi.theweschshop.shopdata.entity.Type;
 import com.lgi.theweschshop.shopdata.repository.ElementRepository;
 import com.lgi.theweschshop.shopdata.service.ElementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,10 +28,15 @@ public class ElementServiceImpl implements ElementService {
     }
 
     @Override
+    public List<Element> getElementsListByType( Type type, Pageable pageable ) {
+        return ( List<Element> ) elementRepository.findAllByType( type );
+    }
+
+    @Override
     @Transactional
-    public void addElement( String elementName, String description ) {
+    public Element addElement( String elementName, String description ) {
         Element element = new Element( elementName, description );
-        elementRepository.save( element );
+        return elementRepository.save( element );
 
     }
 

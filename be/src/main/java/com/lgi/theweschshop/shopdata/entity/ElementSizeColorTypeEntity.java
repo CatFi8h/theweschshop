@@ -1,26 +1,33 @@
 package com.lgi.theweschshop.shopdata.entity;
 
-import com.lgi.theweschshop.shopdata.enums.Size;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Igor Yurchenko on 11/13/17.
  */
+@Getter
+@Setter
+@Entity
 @Table(schema = "tws_storage", name = "element_size_type_color")
 public class ElementSizeColorTypeEntity {
 
-    @Column(name = "element_id")
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Element element;
 
-    @Column(name = "size_id")
-    private Size size;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private SizeEntity size;
 
-    @Column(name = "type_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Type type;
 
-    @Column(name = "color_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Color color;
 
     @Column(name = "amount")

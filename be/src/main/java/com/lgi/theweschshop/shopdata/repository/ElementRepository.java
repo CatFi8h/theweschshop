@@ -17,4 +17,6 @@ public interface ElementRepository extends JpaRepository<Element, Long>, JpaSpec
 
     public Collection<Element> findAllByColorAndSizeEntitiesAndColor( Color color, Size size, Type type );
 
+    public Collection<Element> findAllByType( Type type );
+
 }

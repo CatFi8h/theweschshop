@@ -1,0 +1,78 @@
+.header{
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.logo{
+    position: relative;
+    width: 20%;
+}
+
+.index_body{
+    text-align: center;
+}
+
+.image_shop{
+    opacity: 0.5;
+}
+.image_shop:hover{
+    opacity: 1.0;
+}
+
+/* The navbar container */
+.navigation_menu {
+    position: sticky;
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Navbar links */
+.navigation_menu a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    width: 15%;
+    text-decoration: none;
+}
+
+/* Links - change color on hover */
+.navigation_menu a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.rgallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.responsive{
+    padding: 3% 1.5%;
+    float: left;
+}
+
+.gallery{
+    text-align: center;
+    border: 1px solid chartreuse;
+}
+
+.gallery:hover{
+    border: 1px solid aqua;
+}
+
+.description {
+    padding: 15px;
+    text-align: center;
+}
+
+.footer {
+    background-color: black;
+
+    color: white;
+    padding: 20px   ;
+    text-align: center;
+}
