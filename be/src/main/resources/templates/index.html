@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="UTF-8"/>
@@ -8,24 +11,26 @@
 
 <body>
 
-<div class="header">
-    <img class="logo" src="pictures/wesch_log.png"/>
-</div>
 
-<div class="index_body">
-    <a href="shop.html">
-        <img class="image_shop" src="pictures/shop_now.jpeg"/>
-    </a>
-    <h1 class="text">Welcome to The Wesch` Shop</h1>
-</div>
+Hello
+<!--<div class="header">-->
+    <!--<img class="logo" src="pictures/wesch_log.png"/>-->
+<!--</div>-->
 
-<!--Now is: <b th:text="${execInfo.now.time}"></b>-->
-<!--Elements in system : <b th:text="${elements}"</b>-->
-<div class="footer">
-    SN Login here
-</div>
+<!--<div class="index_body">-->
+    <!--<a th:href="@{/shop}">-->
+        <!--<img class="image_shop" src="pictures/shop_now.jpeg"/>-->
+    <!--</a>-->
+    <!--<h1 class="text">Welcome to The Wesch` Shop</h1>-->
+<!--</div>-->
 
-<link rel="stylesheet" type="text/css" href="style/shop.css">
+<!--&lt;!&ndash;Now is: <b th:text="${execInfo.now.time}"></b>&ndash;&gt;-->
+<!--&lt;!&ndash;Elements in system : <b th:text="${elements}"</b>&ndash;&gt;-->
+<!--<div class="footer">-->
+    <!--SN Login here-->
+<!--</div>-->
+
+<!--<link rel="stylesheet" type="text/css" href="style/shop.css"/>-->
 </body>
 
 </html>

@@ -12,10 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,7 +25,7 @@ import java.util.Optional;
  * Created by Igor Yurchenko on 10/26/17.
  */
 @Controller
-public class ElementController {
+public class ElementController extends WebMvcConfigurerAdapter{
 
     private static final Logger l = LoggerFactory.getLogger( "" );
 
@@ -36,38 +35,49 @@ public class ElementController {
     @Autowired
     private TypeService typeService;
 
-    @GetMapping("/")
+
+    @Override
+    public void addViewControllers( ViewControllerRegistry registry ) {
+        registry.addViewController( "/" ).setViewName( "index" );
+        registry.addViewController( "/index" ).setViewName( "index" );
+//        registry.addViewController( "/list" ).setViewName( "list" );
+//        registry.addViewController( "/add" ).setViewName( "add" );
+//        registry.addViewController( "/login" ).setViewName( "login" );
+
+    }
+
+    @GetMapping("index")
     public String index() {
 
         return "index";
     }
 
-    @GetMapping("/element/list")
-    public String list( @RequestParam @NotEmpty String type, Pageable pageable, Model model ) {
-        Type typeByTypeName = typeService.findTypeByTypeName( type );
-        if ( typeByTypeName == null ) {
-            throw new IllegalArgumentException();
-        }
-        List<Element> allElements = elementService.getElementsListByType( typeByTypeName, pageable );
-        model.addAttribute( "rows", allElements.size() );
-        model.addAttribute( "elements", allElements );
-        return "index";
-    }
-
-    @PostMapping("/addElement")
-    public String addElement( @RequestParam String elementName,
-                              @RequestParam String description ) {
-
-        elementService.addElement( elementName, description );
-
-        return "redirect:/";
-    }
-
-    @PostMapping("element/delete")
-    public String delete( Model model, @RequestParam Number elementId ) {
-        Optional<Element> elementById = elementService.getElementById( elementId );
-        Element element = elementById.orElseThrow( NoSuchElementException::new );
-        elementService.delete( element );
-        return "redirect:/element/list";
-    }
+//    @GetMapping("list")
+//    public String list( @RequestParam @NotEmpty String type, Pageable pageable, Model model ) {
+//        Type typeByTypeName = typeService.findTypeByTypeName( type );
+//        if ( typeByTypeName == null ) {
+//            throw new IllegalArgumentException();
+//        }
+//        List<Element> allElements = elementService.getElementsListByType( typeByTypeName, pageable );
+//        model.addAttribute( "rows", allElements.size() );
+//        model.addAttribute( "elements", allElements );
+//        return "index";
+//    }
+//
+//    @PostMapping("add")
+//    public String addElement( @RequestParam String elementName,
+//                              @RequestParam String description ) {
+//
+//        elementService.addElement( elementName, description );
+//
+//        return "redirect:/";
+//    }
+//
+//    @PostMapping("delete")
+//    public String delete( Model model, @RequestParam Number elementId ) {
+//        Optional<Element> elementById = elementService.getElementById( elementId );
+//        Element element = elementById.orElseThrow( NoSuchElementException::new );
+//        elementService.delete( element );
+//        return "redirect:/element/list";
+//    }
 }
