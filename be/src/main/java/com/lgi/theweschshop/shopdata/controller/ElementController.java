@@ -40,30 +40,30 @@ public class ElementController extends WebMvcConfigurerAdapter{
     public void addViewControllers( ViewControllerRegistry registry ) {
         registry.addViewController( "/" ).setViewName( "index" );
         registry.addViewController( "/index" ).setViewName( "index" );
-//        registry.addViewController( "/list" ).setViewName( "list" );
+        registry.addViewController( "/shop" ).setViewName( "shop" );
 //        registry.addViewController( "/add" ).setViewName( "add" );
 //        registry.addViewController( "/login" ).setViewName( "login" );
 
     }
 
-    @GetMapping("index")
+    @GetMapping("/")
     public String index() {
 
         return "index";
     }
 
-//    @GetMapping("list")
-//    public String list( @RequestParam @NotEmpty String type, Pageable pageable, Model model ) {
-//        Type typeByTypeName = typeService.findTypeByTypeName( type );
-//        if ( typeByTypeName == null ) {
-//            throw new IllegalArgumentException();
-//        }
-//        List<Element> allElements = elementService.getElementsListByType( typeByTypeName, pageable );
-//        model.addAttribute( "rows", allElements.size() );
-//        model.addAttribute( "elements", allElements );
-//        return "index";
-//    }
-//
+    @GetMapping("shop")
+    public String list( @RequestParam @NotEmpty String type, Pageable pageable, Model model ) {
+        Type typeByTypeName = typeService.findTypeByTypeName( type );
+        if ( typeByTypeName == null ) {
+            throw new IllegalArgumentException();
+        }
+        List<Element> allElements = elementService.getElementsListByType( typeByTypeName, pageable );
+        model.addAttribute( "rows", allElements.size() );
+        model.addAttribute( "elements", allElements );
+        return "shop";
+    }
+
 //    @PostMapping("add")
 //    public String addElement( @RequestParam String elementName,
 //                              @RequestParam String description ) {
