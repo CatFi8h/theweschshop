@@ -20,7 +20,7 @@ import java.util.Set;
 public class Element {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

@@ -1,5 +1,6 @@
 package com.lgi.theweschshop.shopdata.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,19 +14,22 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
+@AllArgsConstructor
 @Table(schema = "tws_storage", name = "type_table")
 public class Type {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long tid;
 
     @Column(name = "name")
-    private String typeName;
+    private String name;
+
+    public Type() {
+    }
 
     public Type( String typeName ) {
-        this.typeName = typeName;
+        this.name = typeName;
     }
 }

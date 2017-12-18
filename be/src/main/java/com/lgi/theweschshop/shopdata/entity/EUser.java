@@ -21,7 +21,7 @@ import javax.persistence.*;
 public class EUser {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
     private Long id;
 

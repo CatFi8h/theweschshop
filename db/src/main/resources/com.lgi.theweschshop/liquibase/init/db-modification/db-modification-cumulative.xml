@@ -7,5 +7,6 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include relativeToChangelogFile="true" file="2017-11-28--01-fill-table-data.xml"/>
+    <include relativeToChangelogFile="true" file="2017-12-15--01-fix-table-owner.xml"/>
 
 </databaseChangeLog>

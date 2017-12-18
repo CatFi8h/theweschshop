@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class SizeEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long sid;
 

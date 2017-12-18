@@ -25,7 +25,7 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public Type findTypeByTypeName( String typeName ) {
-        return typeRepository.findTypeByTypeName( typeName );
+        return typeRepository.findDistinctByName( typeName );
     }
 
 }
