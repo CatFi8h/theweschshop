@@ -15,8 +15,8 @@ import java.util.Collection;
 
 public interface ElementRepository extends JpaRepository<Element, Long>, JpaSpecificationExecutor<Element> {
 
-    public Collection<Element> findAllByColorAndSizeEntitiesAndColor( Color color, Size size, Type type );
+     Collection<Element> findAllByColorAndElementSizeAndType( Color color, Size size, Type type );
 
-    public Collection<Element> findAllByType( Type type );
+     Collection<Element> findAllByType( Type type );
 
 }

@@ -17,12 +17,11 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(schema = "tws_storage", name = "user")
+@Table(schema = "tws_storage", name = "users")
 public class EUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "uid")
     private Long id;
 
     @Email
@@ -32,14 +31,9 @@ public class EUser {
 
     private String password;
 
-    @Column(name = "u_name")
     private String name;
 
     private String surname;
-    @Column(name = "access_type")
-    private String accessType;
-
-    private String avatar;
 
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
@@ -65,8 +59,6 @@ public class EUser {
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", accessType='" + accessType + '\'' +
-                ", avatar='" + avatar + '\'' +
                 ", userRole=" + userRole +
                 '}';
     }
