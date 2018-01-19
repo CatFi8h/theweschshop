@@ -11,6 +11,7 @@ import com.lgi.theweschshop.shopdata.service.TypeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -28,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by Igor Yurchenko on 11/15/17.
  */
-//@WebMvcTest(value = ElementController.class)
+@WebMvcTest(value = ElementController.class)
 @RunWith(SpringRunner.class)
 public class ElementControllerTest {
 
@@ -36,10 +37,10 @@ public class ElementControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
+    @Autowired
     private ElementService elementService;
 
-    @MockBean
+    @Autowired
     private TypeService typeService;
 
     @MockBean

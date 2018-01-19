@@ -40,6 +40,7 @@ public class ElementController extends WebMvcConfigurerAdapter{
     public void addViewControllers( ViewControllerRegistry registry ) {
         registry.addViewController( "/" ).setViewName( "index" );
         registry.addViewController( "/index" ).setViewName( "index" );
+        registry.addViewController( "/hello" ).setViewName( "hello" );
         registry.addViewController( "/shop" ).setViewName( "shop" );
 //        registry.addViewController( "/add" ).setViewName( "add" );
 //        registry.addViewController( "/login" ).setViewName( "login" );
