@@ -1,6 +1,6 @@
 package com.lgi.theweschshop.shopdata.service.impl;
 
-import com.lgi.theweschshop.shopdata.entity.EUser;
+import com.lgi.theweschshop.shopdata.model.EUser;
 import com.lgi.theweschshop.shopdata.repository.UserRepository;
 import com.lgi.theweschshop.shopdata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

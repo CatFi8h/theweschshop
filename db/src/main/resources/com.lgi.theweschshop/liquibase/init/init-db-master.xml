@@ -22,6 +22,9 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="gradient" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -64,7 +67,6 @@
     </changeSet>
 
 
-
     <changeSet author="iyurchenko" id="lgi_database-changeset_5">
         <createTable schemaName="tws_storage" tableName="element_table">
             <column name="id" type="bigint">
@@ -83,13 +85,13 @@
             <column name="creation_date" type="timestamp">
                 <constraints nullable="false"/>
             </column>
-            <column name="size" type="varchar(20)">
+            <column name="size" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="color" type="varchar(40)">
+            <column name="color" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="type" type="varchar(40)">
+            <column name="type" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="amount" type="int">
@@ -124,8 +126,8 @@
     </changeSet>
     <changeSet author="iyurchenko" id="lgi_database-changeset_7">
         <addForeignKeyConstraint constraintName="fk_ep_element" baseTableSchemaName="tws_storage"
-                                 referencedTableSchemaName="tws_storage"
                                  baseTableName="element_picture" baseColumnNames="element_id"
+                                 referencedTableSchemaName="tws_storage"
                                  referencedTableName="element_table"
                                  referencedColumnNames="id"/>
     </changeSet>
@@ -134,6 +136,27 @@
                                  referencedTableSchemaName="tws_storage"
                                  baseTableName="element_picture" baseColumnNames="picture_id"
                                  referencedTableName="picture_table"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet author="iyurchenko" id="lgi_database-changeset_9">
+        <addForeignKeyConstraint constraintName="fk_el_color"
+                                 baseTableSchemaName="tws_storage"
+                                 referencedTableSchemaName="tws_storage"
+                                 baseTableName="element_table" baseColumnNames="color"
+                                 referencedTableName="color_table"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint constraintName="fk_el_size"
+                                 baseTableSchemaName="tws_storage"
+                                 referencedTableSchemaName="tws_storage"
+                                 baseTableName="element_table" baseColumnNames="size"
+                                 referencedTableName="size_table"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint constraintName="fk_el_type"
+                                 baseTableSchemaName="tws_storage"
+                                 referencedTableSchemaName="tws_storage"
+                                 baseTableName="element_table" baseColumnNames="type"
+                                 referencedTableName="type_table"
                                  referencedColumnNames="id"/>
     </changeSet>
 
@@ -154,7 +177,6 @@
             <column name="user_role" type="varchar(255)"/>
         </createTable>
     </changeSet>
-
 
 
 </databaseChangeLog>

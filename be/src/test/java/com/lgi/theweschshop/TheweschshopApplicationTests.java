@@ -11,6 +11,7 @@ public class TheweschshopApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println();
 	}
 
 }

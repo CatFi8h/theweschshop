@@ -24,40 +24,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<!--<profiles>-->
-		<!--<profile>-->
-			<!--<id>thymleaf</id>-->
-			<!--<build>-->
-				<!--<resources>-->
-					<!--<resource>-->
-						<!--<directory>src/main/resources</directory>-->
-					<!--</resource>-->
-				<!--</resources>-->
-			<!--</build>-->
-		<!--</profile>-->
-		<!--<profile>-->
-			<!--<id>dev</id>-->
-			<!--<build>-->
-				<!--<resources>-->
-					<!--<resource>-->
-						<!--<directory>src/main/resources/dev</directory>-->
-					<!--</resource>-->
-				<!--</resources>-->
-			<!--</build>-->
-		<!--</profile>-->
-		<!--<profile>-->
-			<!--<id>release</id>-->
-			<!--<build>-->
-				<!--<resources>-->
-					<!--<resource>-->
-						<!--<directory>src/main/resources/release</directory>-->
-					<!--</resource>-->
-				<!--</resources>-->
-			<!--</build>-->
-
-		<!--</profile>-->
-	<!--</profiles>-->
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -100,7 +66,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>

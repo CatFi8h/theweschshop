@@ -10,10 +10,10 @@
 //
 //    Optional<T> find( Serializable id );
 //
-//    void persist( T entity );
+//    void persist( T model );
 //
-//    T merge( T entity );
+//    T merge( T model );
 //
-//    void remove( T entity );
+//    void remove( T model );
 //
 //}

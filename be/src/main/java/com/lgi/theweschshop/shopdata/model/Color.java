@@ -1,5 +1,6 @@
-package com.lgi.theweschshop.shopdata.entity;
+package com.lgi.theweschshop.shopdata.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,18 +18,17 @@ public class Color {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cid;
+    @Column(name = "id")
+    @JsonProperty("id")
+    private Long id;
 
-    @Column(name = "color_name")
+    @Column(name = "name")
     private String colorName;
-
-//    @OneToMany(mappedBy = "color")
-//    private Set<Element> element;
 
     private String gradient;
 
-
-    public Color( String colorName ) {
+    public Color( String colorName , String gradient) {
         this.colorName = colorName;
+        this.gradient = gradient;
     }
 }

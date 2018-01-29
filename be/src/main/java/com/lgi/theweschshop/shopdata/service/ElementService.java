@@ -1,7 +1,8 @@
 package com.lgi.theweschshop.shopdata.service;
 
-import com.lgi.theweschshop.shopdata.entity.Element;
-import com.lgi.theweschshop.shopdata.entity.Type;
+import com.lgi.theweschshop.shopdata.model.Element;
+import com.lgi.theweschshop.shopdata.model.Type;
+import com.lgi.theweschshop.shopdata.requests.ElementSaveRequestDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,7 @@ public interface ElementService {
 
     List<Element> getElementsListByType( Type type, Pageable pageable );
 
-    Element addElement( String elementName, String description );
+//    Element addElement( ElementSaveRequestDTO elementRequest );
 
     Optional<Element> getElementById( Number elementId );
 

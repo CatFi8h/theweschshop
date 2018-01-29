@@ -1,4 +1,4 @@
-package com.lgi.theweschshop.shopdata.entity;
+package com.lgi.theweschshop.shopdata.model;
 
 
 import lombok.Getter;

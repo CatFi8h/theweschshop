@@ -1,14 +1,15 @@
 package com.lgi.theweschshop.shopdata.controller;
 
-import com.lgi.theweschshop.shopdata.entity.Element;
-import com.lgi.theweschshop.shopdata.entity.Type;
-import com.lgi.theweschshop.shopdata.requests.ElementRequest;
+import com.lgi.theweschshop.shopdata.model.Element;
+import com.lgi.theweschshop.shopdata.model.Type;
+import com.lgi.theweschshop.shopdata.requests.ElementSaveRequestDTO;
 import com.lgi.theweschshop.shopdata.service.ElementService;
 import com.lgi.theweschshop.shopdata.service.TypeService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -57,22 +57,28 @@ public class ElementController extends WebMvcConfigurerAdapter{
     public String list( @RequestParam @NotEmpty String type, Pageable pageable, Model model ) {
         Type typeByTypeName = typeService.findTypeByTypeName( type );
         if ( typeByTypeName == null ) {
-            throw new IllegalArgumentException();
+            typeByTypeName = typeService.getDefaultType();
         }
         List<Element> allElements = elementService.getElementsListByType( typeByTypeName, pageable );
-        model.addAttribute( "rows", allElements.size() );
+        if ( allElements == null ) {
+            allElements = new ArrayList<>();
+        }
+        int size = allElements.size();
+        if ( size < 1 ) {
+            size = 1;
+        }
+        model.addAttribute( "rows", size );
         model.addAttribute( "elements", allElements );
         return "shop";
     }
 
-//    @PostMapping("add")
-//    public String addElement( @RequestParam String elementName,
-//                              @RequestParam String description ) {
-//
-//        elementService.addElement( elementName, description );
-//
-//        return "redirect:/";
-//    }
+    @PostMapping("add")
+    public String addElement( @RequestParam @Valid ElementSaveRequestDTO element ) {
+
+//        elementService.addElement( element );
+
+        return "redirect:/shop";
+    }
 //
 //    @PostMapping("delete")
 //    public String delete( Model model, @RequestParam Number elementId ) {

@@ -1,4 +1,4 @@
-package com.lgi.theweschshop.shopdata.entity;
+package com.lgi.theweschshop.shopdata.model;
 
 import com.lgi.theweschshop.shopdata.enums.Size;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class SizeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long sid;
+    private Long id;
 
     @NonNull
     @Enumerated(EnumType.STRING)

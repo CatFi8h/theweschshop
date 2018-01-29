@@ -1,6 +1,6 @@
 package com.lgi.theweschshop.shopdata.service.impl;
 
-import com.lgi.theweschshop.shopdata.entity.Type;
+import com.lgi.theweschshop.shopdata.model.Type;
 import com.lgi.theweschshop.shopdata.repository.TypeRepository;
 import com.lgi.theweschshop.shopdata.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,11 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type findTypeByTypeName( String typeName ) {
         return typeRepository.findDistinctByName( typeName );
+    }
+
+    @Override
+    public Type getDefaultType() {
+        return typeRepository.findOne( 0L );
     }
 
 }

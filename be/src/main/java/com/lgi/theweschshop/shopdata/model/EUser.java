@@ -1,4 +1,4 @@
-package com.lgi.theweschshop.shopdata.entity;
+package com.lgi.theweschshop.shopdata.model;
 
 import com.lgi.theweschshop.shopdata.enums.UserRole;
 import lombok.Getter;

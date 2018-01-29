@@ -1,6 +1,6 @@
 package com.lgi.theweschshop.shopdata.service;
 
-import com.lgi.theweschshop.shopdata.entity.EUser;
+import com.lgi.theweschshop.shopdata.model.EUser;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;

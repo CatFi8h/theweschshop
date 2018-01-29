@@ -2,7 +2,7 @@
 //
 //import com.lgi.theweschshop.shopdata.dao.AbstractGenericDAO;
 //import com.lgi.theweschshop.shopdata.dao.UserDAO;
-//import com.lgi.theweschshop.shopdata.entity.EUser;
+//import com.lgi.theweschshop.shopdata.model.EUser;
 //import org.springframework.stereotype.Repository;
 //
 //import javax.persistence.Query;

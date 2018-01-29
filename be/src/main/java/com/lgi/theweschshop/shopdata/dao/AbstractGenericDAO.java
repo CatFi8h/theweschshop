@@ -26,17 +26,17 @@
 //    }
 //
 //    @Override
-//    public void persist( T entity ) {
-//        entityManager.persist( entity );
+//    public void persist( T model ) {
+//        entityManager.persist( model );
 //    }
 //
 //    @Override
-//    public T merge( T entity ) {
-//        return entityManager.merge( entity );
+//    public T merge( T model ) {
+//        return entityManager.merge( model );
 //    }
 //
 //    @Override
-//    public void remove( T entity ) {
-//        entityManager.remove( entity );
+//    public void remove( T model ) {
+//        entityManager.remove( model );
 //    }
 //}

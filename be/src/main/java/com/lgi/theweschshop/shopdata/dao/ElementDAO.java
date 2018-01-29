@@ -1,6 +1,6 @@
 //package com.lgi.theweschshop.shopdata.dao;
 //
-//import com.lgi.theweschshop.shopdata.entity.Element;
+//import com.lgi.theweschshop.shopdata.model.Element;
 //
 //import java.util.List;
 //

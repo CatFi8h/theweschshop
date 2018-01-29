@@ -1,5 +1,6 @@
-package com.lgi.theweschshop.shopdata.entity;
+package com.lgi.theweschshop.shopdata.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,26 +11,22 @@ import javax.persistence.*;
 /**
  * Created by Igor Yurchenko on 10/26/17.
  */
-
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "tws_storage", name = "type_table")
-public class Type {
+@Table(schema = "tws_storage", name = "picture_table")
+public class Picture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long tid;
+    private Long id;
 
     @Column(name = "name")
-    private String name;
+    private String pictureName;
 
-    public Type() {
-    }
+    @Column(name = "picture")
+    private byte[] picture;
 
-    public Type( String typeName ) {
-        this.name = typeName;
-    }
 }

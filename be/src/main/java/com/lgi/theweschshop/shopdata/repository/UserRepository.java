@@ -1,6 +1,6 @@
 package com.lgi.theweschshop.shopdata.repository;
 
-import com.lgi.theweschshop.shopdata.entity.EUser;
+import com.lgi.theweschshop.shopdata.model.EUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

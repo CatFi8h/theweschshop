@@ -1,7 +1,7 @@
-package com.lgi.theweschshop.shopdata.entity;
+package com.lgi.theweschshop.shopdata.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lgi.theweschshop.shopdata.enums.Gender;
+import com.lgi.theweschshop.shopdata.enums.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,24 +41,23 @@ public class Element {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 
-    @Column(name = "type")
-    private String type;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "type")
+    private Type type;
 
-    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
-    private Set<Picture> picture;
+//    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
+//    private Set<Picture> picture;
 
-    @Column(name = "size")
-    private String elementSize;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "size")
+    private SizeEntity size;
 
-    @Column(name = "color")
-    private String color;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "color")
+    private Color color;
 
     @Column(name = "amount")
-    private Long amount;
+    private Integer amount;
 
-    public Element( String name, String description ) {
-        this.name = name;
-        this.description = description;
-    }
 
 }
