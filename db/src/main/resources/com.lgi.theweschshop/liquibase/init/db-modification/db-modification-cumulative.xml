@@ -6,7 +6,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <!--<include relativeToChangelogFile="true" file="2017-11-28&#45;&#45;01-fill-table-data.xml"/>-->
-    <!--<include relativeToChangelogFile="true" file="2017-12-15&#45;&#45;01-fix-table-owner.xml"/>-->
+    <include relativeToChangelogFile="true" file="2018-02-06--01-add-unique-constraint.xml"/>
 
 </databaseChangeLog>

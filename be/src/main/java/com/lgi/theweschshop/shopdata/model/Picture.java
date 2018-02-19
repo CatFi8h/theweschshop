@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.persistence.*;
 
@@ -29,4 +30,10 @@ public class Picture {
     @Column(name = "picture")
     private byte[] picture;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Element element;
+
+    public String getEncodedString() {
+        return Base64.encodeBase64URLSafeString( this.picture );
+    }
 }

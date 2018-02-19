@@ -28,5 +28,5 @@ public class ElementSaveRequestDTO {
 
     private String gender;
 
-
+    private Double price;
 }

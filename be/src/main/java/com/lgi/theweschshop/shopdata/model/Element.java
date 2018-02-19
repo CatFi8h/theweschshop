@@ -31,8 +31,8 @@ public class Element {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
-    private List<Comment> comment;
+    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
     @Column(name = "gender")
     private String gender;
@@ -45,19 +45,20 @@ public class Element {
     @JoinColumn(name = "type")
     private Type type;
 
-//    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
-//    private Set<Picture> picture;
+    @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
+    private List<Picture> pictures;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "size")
     private SizeEntity size;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "color")
-    private Color color;
-
     @Column(name = "amount")
     private Integer amount;
 
+    @Column(name = "price", scale = 0, columnDefinition="numeric")
+    private Double price;
+
+    @Column(name = "components")
+    private String components;
 
 }

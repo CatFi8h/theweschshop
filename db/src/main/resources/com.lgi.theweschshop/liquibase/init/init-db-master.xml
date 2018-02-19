@@ -16,8 +16,8 @@
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_1">
         <createTable schemaName="tws_storage" tableName="color_table">
-            <column name="id" type="bigint">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -31,7 +31,7 @@
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_2">
         <createTable schemaName="tws_storage" tableName="size_table">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -43,7 +43,7 @@
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_3">
         <createTable schemaName="tws_storage" tableName="type_table">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -54,7 +54,7 @@
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_4">
         <createTable schemaName="tws_storage" tableName="picture_table">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -69,7 +69,7 @@
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_5">
         <createTable schemaName="tws_storage" tableName="element_table">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -102,12 +102,13 @@
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_5.1">
         <createTable schemaName="tws_storage" tableName="comments">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="comment" type="varchar"></column>
-            <column name="user_name" type="varchar"></column>
-            <column name="user_email" type="varchar"></column>
+            <column name="comment" type="varchar"/>
+            <column name="user_name" type="varchar"/>
+            <column name="user_email" type="varchar"/>
+            <column name="element_id" type="bigint"/>
         </createTable>
     </changeSet>
 
@@ -162,7 +163,7 @@
 
     <changeSet author="iyurchenko" id="lgi_database_changeset_10">
         <createTable schemaName="tws_storage" tableName="users">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="email" type="varchar(255)">

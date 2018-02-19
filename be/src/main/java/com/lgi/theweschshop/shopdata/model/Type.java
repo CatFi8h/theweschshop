@@ -14,7 +14,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
 @Table(schema = "tws_storage", name = "type_table")
 public class Type {
 
@@ -27,10 +26,4 @@ public class Type {
     @Column(name = "name")
     private String name;
 
-    public Type() {
-    }
-
-    public Type( String typeName ) {
-        this.name = typeName;
-    }
 }

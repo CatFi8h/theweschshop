@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin</title>
+    <script src="/js/elementSlide.js"></script>
+
+</head>
+<body>
+<div class="header">
+
+</div>
+<div style="padding: 5% ;">
+
+    <div class="imageDiv">
+        <div class="slideshow-container">
+            <div th:each="i : ${#numbers.sequence(0, picturesSize - 1)}">
+                <div class="mySlides fade">
+                    <div class="numbertext" th:text="${i+1} + ' / ' + ${picturesSize}">i / size</div>
+                    <img th:src="'/pictures/'+${element.id}+'/'+${pictures[i].pictureName}" src="/pictures/shop_now.jpeg" width="100%"/>
+                    <!--th:src="'data:image/png;base64,'+${pictures[i].getEncodedString()}"-->
+                </div>
+
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <div >
+                <div style="text-align:center" >
+                    <span th:each="i : ${#numbers.sequence(0, picturesSize - 1)}" class="dot" th:onclick="'currentSlide('+${i+1}+')'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="element_description">
+            <div class="element_name" th:text="${element.name}">
+                Element Name
+            </div>
+            <div class="desc" th:text="${element.description}">Description</div>
+            <div class="element_size"></div>
+            <div class="element_gender"> Размер:<span th:text="${element.size.size}">XL</span>
+                <span th:text="${element.gender}">Description</span></div>
+            <div class="price_amount" th:text="${element.price}"></div>
+            <div class="by_button">
+                <button></button>
+            </div>
+            <div class="components">
+                Состав:
+                <span th:text="${element.components}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        Please Leave Your Comment
+        <form action="saveComment" th:action="@{/saveComment}" method="get">
+            <label for="ename">User Name</label>
+            <input type="text" id="ename" name="name" placeholder="Your name.."/>
+
+            <label for="eemail">Email</label>
+            <input type="text" id="eemail" name="email" placeholder="Place your email here.."/>
+
+
+            <label for="ecomment">Comment</label>
+            <input type="text" id="ecomment" name="comment" placeholder="Place your comment here.."/>
+            <input type="hidden" name="elementId" th:field="${element.id}"/>
+            <input type="submit" value="Submit"/>
+        </form>
+
+
+        <div class="comment_container" th:each="comment: ${element.comments}">
+            <img src="/pictures/default_avatar.png" alt="Avatar"/>
+            <span class="comment_name" th:text="${comment.name}">User Name</span>
+            <p class="comment_message" th:text="${comment.comment}">Hello. How are you today?</p>
+            <span class="time-right" th:text="${comment.getDate()}">11:00</span>
+        </div>
+
+
+    </div>
+</div>
+
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/elementStyle.css}"/>
+</body>
+</html>
