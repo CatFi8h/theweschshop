@@ -24,6 +24,8 @@ public class ElementResponse {
 
     private Integer amount;
 
+    private Double price;
+
 
     public ElementResponse( Element element ) {
         this.id = element.getId();
@@ -32,5 +34,6 @@ public class ElementResponse {
         this.gender = element.getGender();
         this.type = element.getType().getName();
         this.amount = element.getAmount();
+        this.price = element.getPrice();
     }
 }
