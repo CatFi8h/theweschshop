@@ -1,0 +1,263 @@
+
+
+html {
+    box-sizing: border-box
+}
+
+*,*::after,*::before {
+    box-sizing: inherit
+}
+
+.u-disable-scrolling {
+    overflow: hidden
+}
+
+.u-center {
+    text-align: center
+}
+
+.u-visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px)
+}
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+body {
+    line-height: 1
+}
+
+ol,ul {
+    list-style: none
+}
+
+blockquote,q {
+    quotes: none
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+body {
+    font-family: "HurmeGeometricSans3-Regular", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    width: 100%;
+    overflow-x: hidden
+}
+
+.generic-content h2 {
+    font-family: 'HurmeGeometricSans3-SemiBold', Helvetica, Arial, sans-serif;
+    font-size: 1.875em;
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+
+
+.header_class{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: background-color 0.25s;
+    z-index: 1000;
+}
+
+.hero_header {
+    font-family: 'HurmeGeometricSans3-SemiBoldObl', Helvetica, Arial, sans-serif;
+    font-size: 4.5em;
+    padding: 0 10px;
+    line-height: 1.4;
+    letter-spacing: 10px;
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1168px;
+    color: #7a98ff;
+    text-transform: uppercase;
+    -webkit-transform: skewY(-5deg);
+    -moz-transform: skewY(-5deg);
+    -ms-transform: skewY(-5deg);
+    -o-transform: skewY(-5deg);
+    transform: skewY(-5deg);
+    text-align: center;
+
+    /*TODO remove hidden*/
+    visibility: hidden;
+}
+
+.home-shop-links {
+    justify-content: center;
+    padding: 0 3%;
+    display: flex;
+}
+
+.home-shop-links__item {
+    display: inline-block;
+}
+
+ul {
+    list-style: none;
+}
+
+/*.nav-logo {*/
+    /*background-image: url(../pictures/wesch_log.png);*/
+/*}*/
+
+.nav-logo {
+    width: 180px;
+    height: 56px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    display: inline-block;
+}
+
+.nav-links {
+    float: left;
+    text-align: left;
+    padding-right: 0;
+    width: 41%;
+    padding-left: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.shopify_section {
+    margin: 0 7%;
+}
+
+.shopify_section__h2{
+
+}
+
+.nav__wrap {
+    height: 130px;
+    max-height: 130px;
+    text-align: center;
+    overflow: hidden;
+    display: block;
+}
+
+.nav_link_list__left {
+    float: left;
+    text-align: left;
+    padding-right: 0;
+}
+
+.nav_link_list__right {
+    float: right;
+    flex-direction: row-reverse;
+    padding-right: 0;
+}
+
+.nav__item {
+    margin: 0 3%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: auto;
+    border-bottom: none;
+
+}
+
+.nav__link {
+    margin: 0;
+    padding: 10px 0;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.25s;
+}
+
+body a {
+    display: block;
+    color: black
+}
+
+body a.link--underline {
+    font-family: 'HurmeGeometricSans3-SemiBold', Helvetica, Arial, sans-serif;
+    display: inline-block;
+    font-size: 0.75em;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 25px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    line-height: 1.7
+}
+body .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999
+}
+
+body .loader .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+body .loader .inner svg {
+    width: 50px;
+    height: 50px;
+    -webkit-animation: pulse2 3s ease infinite;
+    -moz-animation: pulse2 3s ease infinite;
+    animation: pulse2 3s ease infinite
+}
+
+body .hidden-label {
+    display: none
+}
+
+body .hidden {
+    display: none
+}
+
+body .hero-header {
+    font-family: 'HurmeGeometricSans3-SemiBoldObl', Helvetica, Arial, sans-serif;
+    font-size: 4.125em;
+    line-height: 1.2;
+    color: white;
+    letter-spacing: 9px;
+    text-transform: uppercase;
+    -webkit-transform: skewY(-5deg);
+    -moz-transform: skewY(-5deg);
+    -ms-transform: skewY(-5deg);
+    -o-transform: skewY(-5deg);
+    transform: skewY(-5deg)
+}
+
+
+.logo {
+    height: 50px;
+    width: auto;
+}

@@ -11,8 +11,26 @@
 <body>
 
 <div class="main">
+
+    <header class="header_class">
+        <nav class="nav-wrap">
+            <div class="nav-links"></div>
+            <div class="nav-logo">
+                <a href="/">
+                    <img class="logo" th:src="@{pictures/wesch_log.png}"/>
+                </a>
+            </div>
+            <ul class="nav-link-list">
+                <li class="nav__item"></li>
+                <li class="nav__item"></li>
+                <li class="nav__item"></li>
+                <li class="nav__item nav_selection__flags"></li>
+                <li class="nav__item nav_selection__shopping_cart"></li>
+            </ul>
+        </nav>
+    </header>
     <div class="header">
-        <img class="logo" th:src="@{pictures/wesch_log.png}"/>
+
     </div>
 
     <div class="navigation_menu">
@@ -31,7 +49,8 @@
         <div class="row">
             <div class="column" th:each="element : ${elements}">
                 <div class="content">
-                    <a th:href="@{'/shop/' + ${element.id}}"><img src="/pictures/shop_now.jpeg" alt="Mountains" style="width:100%"/></a>
+                    <a th:href="@{'/shop/' + ${element.id}}"><img src="/pictures/shop_now.jpeg" alt="Mountains"
+                                                                  style="width:100%"/></a>
                     <span th:text="${element.id}">1.</span>
                     <span th:text="${element.name}">ElementName</span>
                     <span th:text="${element.price}">ElementName</span>

@@ -41,14 +41,14 @@ public class Element {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "type")
     private Type type;
 
     @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
     private List<Picture> pictures;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "size")
     private SizeEntity size;
 

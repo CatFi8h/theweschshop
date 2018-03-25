@@ -32,93 +32,101 @@
 
     <div class="imageDiv">
         <div class="slideshow-container">
-            <div th:each="i : ${#numbers.sequence(0, picturesSize - 1)}">
-                <div class="mySlides fade">
-                    <div class="numbertext" th:text="${i+1} + ' / ' + ${picturesSize}">i / size</div>
-                    <img th:src="'/pictures/w'+${i+1} +'.jpg'" width="100%"/>
-                    <!--th:src="'data:image/png;base64,'+${pictures[i].getEncodedString()}"-->
+            <th:block th:if="${pictureSize} != null">
+                <div th:each="${picture : pictures}">
+                    <!--<div th:each="i : ${#numbers.sequence(0, picturesSize - 1)}">-->
+                    <div class="mySlides fade">
+                        <div class="numbertext" th:text="${i+1} + ' / ' + ${picturesSize}">i / size</div>
+                        <img th:src="'/pictures/w'+${i+1} +'.jpg'" width="100%"/>
+                        <!--th:src="'data:image/png;base64,'+${pictures[i].getEncodedString()}"-->
+                    </div>
+                   <!--<div class="mySlides fade">-->
+                        <!--<div class="numbertext" th:text="${i+1} + ' / ' + ${picturesSize}">i / size</div>-->
+                        <!--<img th:src="'/pictures/w'+${i+1} +'.jpg'" width="100%"/>-->
+                        <!--&lt;!&ndash;th:src="'data:image/png;base64,'+${pictures[i].getEncodedString()}"&ndash;&gt;-->
+                    <!--</div>-->
+
                 </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+        </th:block>
+    </div>
+    <div class="element_description">
+        <div class="element_name" th:text="${element.name}">
+            Element Name
+        </div>
+        <div class="element_description" th:text="${element.description}">Description</div>
+        <div class="element_size" th:text="${element.size.size}">XL</div>
+        <div class="element_gender" th:text="${element.gender}">Description</div>
+        <div class="price_amount" th:text="${element.price}"></div>
+        <div class="by_button">
+            <button></button>
+        </div>
+        <div class="components" th:text="${element.components}"></div>
+    </div>
+</div>
 
-            </div>
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
-        </div>
-        <div class="element_description">
-            <div class="element_name" th:text="${element.name}">
-                Element Name
-            </div>
-            <div class="element_description" th:text="${element.description}">Description</div>
-            <div class="element_size" th:text="${element.size.size}">XL</div>
-            <div class="element_gender" th:text="${element.gender}">Description</div>
-            <div class="price_amount" th:text="${element.price}"></div>
-            <div class="by_button">
-                <button></button>
-            </div>
-            <div class="components" th:text="${element.components}"></div>
-        </div>
+<table class="element_table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Size</th>
+        <th>Type</th>
+        <th>Gender</th>
+    </tr>
+    <tr>
+        <td>
+            <span th:text="${element.id}">Id</span>
+        </td>
+        <td>
+            <span th:text="${element.name}">Test</span>
+        </td>
+        <td>
+            <span th:text="${element.description}">Test</span>
+        </td>
+        <td>
+            <span th:text="${element.size.size}">Test</span>
+        </td>
+        <td>
+            <span th:text="${element.type.name}">Test</span>
+        </td>
+        <td>
+            <span th:text="${element.gender}">Test</span>
+        </td>
+    </tr>
+</table>
+<div>
+    Please Leave Your Comment
+    <form action="saveComment" th:action="@{/saveComment}" method="get">
+        <label for="ename">User Name</label>
+        <input type="text" id="ename" name="name" placeholder="Your name.."/>
+
+        <label for="eemail">Email</label>
+        <input type="text" id="eemail" name="email" placeholder="Place your email here.."/>
+
+
+        <label for="ecomment">Comment</label>
+        <input type="text" id="ecomment" name="comment" placeholder="Place your comment here.."/>
+        <input type="hidden" name="elementId" th:field="${element.id}"/>
+        <input type="submit" value="Submit"/>
+    </form>
+
+
+    <div class="comment_container" th:each="comment: ${element.comments}">
+        <img src="/pictures/default_avatar.png" alt="Avatar"/>
+        <span class="comment_name" th:text="${comment.name}">User Name</span>
+        <p class="comment_message" th:text="${comment.comment}">Hello. How are you today?</p>
+        <span class="time-right" th:text="${comment.getDate()}">11:00</span>
     </div>
 
-    <table class="element_table">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Size</th>
-            <th>Type</th>
-            <th>Gender</th>
-        </tr>
-        <tr>
-            <td>
-                <span th:text="${element.id}">Id</span>
-            </td>
-            <td>
-                <span th:text="${element.name}">Test</span>
-            </td>
-            <td>
-                <span th:text="${element.description}">Test</span>
-            </td>
-            <td>
-                <span th:text="${element.size.size}">Test</span>
-            </td>
-            <td>
-                <span th:text="${element.type.name}">Test</span>
-            </td>
-            <td>
-                <span th:text="${element.gender}">Test</span>
-            </td>
-        </tr>
-    </table>
-    <div>
-        Please Leave Your Comment
-        <form action="saveComment" th:action="@{/saveComment}" method="get">
-            <label for="ename">User Name</label>
-            <input type="text" id="ename" name="name" placeholder="Your name.."/>
 
-            <label for="eemail">Email</label>
-            <input type="text" id="eemail" name="email" placeholder="Place your email here.."/>
-
-
-            <label for="ecomment">Comment</label>
-            <input type="text" id="ecomment" name="comment" placeholder="Place your comment here.."/>
-            <input type="hidden" name="elementId" th:field="${element.id}"/>
-            <input type="submit" value="Submit"/>
-        </form>
-
-
-        <div class="comment_container" th:each="comment: ${element.comments}">
-            <img src="/pictures/default_avatar.png" alt="Avatar"/>
-            <span class="comment_name" th:text="${comment.name}">User Name</span>
-            <p class="comment_message" th:text="${comment.comment}">Hello. How are you today?</p>
-            <span class="time-right" th:text="${comment.getDate()}">11:00</span>
-        </div>
-
-
-    </div>
+</div>
 </div>
 
 

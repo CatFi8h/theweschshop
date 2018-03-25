@@ -16,13 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
-//import com.lgi.theweschshop.shopdata.model.Color;
-//import com.lgi.theweschshop.shopdata.repository.ColorRepository;
+import java.util.*;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -36,12 +30,10 @@ public class ElementServiceImpl implements ElementService {
     @Autowired
     private TypeRepository typeRepository;
 
-//    @Autowired
-//    private ColorRepository colorRepository;
+    private Map<String, Set<Long>> cart = new HashMap<>();
 
     @Autowired
     private SizeEntityRepository sizeEntityRepository;
-
 
     @Override
     public List<Element> getAllElements() {

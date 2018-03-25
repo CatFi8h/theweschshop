@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>The Wesch' Shop</title>
+</head>
+
+<body>
+
+
+<header class="header_class">
+    <div class="nav__mobile">
+        <div id="mobile-menu-action" class="hamburger"></div>
+    </div>
+    <nav class="nav__wrap">
+        <div class="nav-links nav_link_list__left">
+            <div class="shopify_section">
+                <h2 class="nav__item shopify_section__h2">
+                    <a href="" class="nav__link">about</a>
+                </h2>
+            </div>
+            <div class="shopify_section">
+                <h2 class="nav__item shopify_section__h2">
+                    <a href="" class="nav__link">men</a>
+                </h2>
+            </div>
+            <div class="shopify_section">
+                <h2 class="nav__item shopify_section__h2">
+                    <a href="" class="nav__link">women</a>
+                </h2></div>
+        </div>
+        <div class="nav-logo">
+            <a href="/">
+                <img class="logo" src="pictures/wesch_log.png"/>
+            </a>
+        </div>
+        <ul class="nav-links nav_link_list__right">
+            <li class="nav__item nav_selection__shopping_cart">Cart</li>
+            <li class="nav__item nav_selection__flags">Language</li>
+            <li class="nav__item">Help</li>
+            <li class="nav__item">Account</li>
+            <li class="nav__item">Sign Up</li>
+
+        </ul>
+    </nav>
+</header>
+
+
+<main>
+    <section id="hero_container">
+        <div class="row">
+            <div class="column" th:each="element : ${elements}">
+                <div class="content">
+                    <a th:href="@{'/cart/' + ${element.id}}"><img src="/pictures/shop_now.jpeg" alt="Mountains"
+                                                                  style="width:100%"/></a>
+                    <span th:text="${element.id}">1.</span>
+                    <span th:text="${element.name}">ElementName</span>
+                    <span th:text="${element.price}">ElementName</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</main>
+
+<footer>
+
+    <div class="footer">
+
+
+        <a target="_blank" title="follow me on instagram" href="http://www.instagram.com/thewesch">
+            <img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram40x40.png"/>
+        </a>
+        <a target="_blank" title="find us on Facebook" href="http://www.facebook.com/thewesch">
+            <img alt="find us on facebook"
+                 src="//login.create.net/images/icons/user/facebook-c_130x50.png"/>
+        </a>
+
+    </div>
+</footer>
+
+
+<link rel="stylesheet" type="text/css" href="style/shop_new.css"/>
+<!--<link rel="stylesheet" type="text/css" href="style/shop1.css"/>-->
+</body>
+
+</html>

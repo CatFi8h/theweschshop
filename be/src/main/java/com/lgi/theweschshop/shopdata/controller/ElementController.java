@@ -1,6 +1,5 @@
 package com.lgi.theweschshop.shopdata.controller;
 
-import antlr.StringUtils;
 import com.lgi.theweschshop.shopdata.enums.Gender;
 import com.lgi.theweschshop.shopdata.model.Element;
 import com.lgi.theweschshop.shopdata.model.Picture;
