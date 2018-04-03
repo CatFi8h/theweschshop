@@ -51,10 +51,13 @@
 
 <main>
     <section id="hero_container">
+        test
         <div class="row">
+            <div th:text="${elements.size()}"></div>
             <div class="column" th:each="element : ${elements}">
                 <div class="content">
-                    <a th:href="@{'/cart/' + ${element.id}}"><img src="/pictures/shop_now.jpeg" alt="Mountains"
+                    test1
+                    <a th:href="@{'/shop/' + ${element.id}}"><img src="/pictures/shop_now.jpeg" alt="Mountains"
                                                                   style="width:100%"/></a>
                     <span th:text="${element.id}">1.</span>
                     <span th:text="${element.name}">ElementName</span>
@@ -85,7 +88,7 @@
 </footer>
 
 
-<link rel="stylesheet" type="text/css" href="style/shop_new.css"/>
+<link rel="stylesheet" type="text/css" href="style/cart.css"/>
 <!--<link rel="stylesheet" type="text/css" href="style/shop1.css"/>-->
 </body>
 

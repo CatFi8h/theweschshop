@@ -23,24 +23,52 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<Element> getCartForSession( int pageNumber, String sortType, String sessionId ) {
-        PageRequest pageRequest = new PageRequest( pageNumber - 1, 10, Sort.Direction.ASC, sortType );
+        Sort orders;
+
+        if ( sortType == null ) {
+            orders = new Sort( Sort.Direction.ASC );
+        } else {
+            orders = new Sort( Sort.Direction.ASC, sortType );
+        }
+        PageRequest pageRequest = new PageRequest( pageNumber - 1, 10, orders );
         Set<CartElementDTO> cartElementDTOS = cart.get( sessionId );
         if ( cartElementDTOS == null ) {
             cartElementDTOS = new HashSet<>();
         }
         Set<Long> longs = cartElementDTOS.stream().map( CartElementDTO::getElementId ).collect( Collectors.toSet() );
-
+        if ( longs == null || longs.isEmpty() ) {
+            return new ArrayList<>();
+        }
         Page<Element> elementsById = elementRepository.findElementsById( pageRequest, new ArrayList<>( longs ) );
         return elementsById.getContent();
     }
 
     @Override
     public void addIdToCart( Long id, Long amount, String sessionId ) {
+
+        Element one = elementRepository.findOne( id );
+        if ( one == null ) {
+            throw new IllegalArgumentException( "No Element with such ID" );
+        }
         Set<CartElementDTO> longs = cart.get( sessionId );
         if ( longs == null ) {
             longs = new HashSet<>();
+            CartElementDTO e = new CartElementDTO();
+            e.setAmount( amount );
+            e.setElementId( one.getId() );
+            e.setSessionId( sessionId );
+            longs.add( e );
+        } else {
+            Iterator<CartElementDTO> iterator = longs.iterator();
+            while ( iterator.hasNext() ) {
+                CartElementDTO element = iterator.next();
+                if ( element != null && element.getElementId().equals( id ) ) {
+                    element.setAmount( element.getAmount() + amount );
+                }
+            }
+
+//            longs.stream().filter( e -> e.getElementId().equals( id ) ).forEach( e -> e.setAmount( amount ) );
         }
-        longs.stream().filter( e -> e.getElementId().equals( id ) ).forEach( e->e.setAmount( amount ) );
         cart.put( sessionId, longs );
     }
 
