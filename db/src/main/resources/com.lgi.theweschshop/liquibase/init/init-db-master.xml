@@ -14,19 +14,19 @@
     </changeSet>
 
 
-    <changeSet author="iyurchenko" id="lgi_database-changeset_1">
-        <createTable schemaName="tws_storage" tableName="color_table">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false" />
-            </column>
-            <column name="name" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="gradient" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
+    <!--<changeSet author="iyurchenko" id="lgi_database-changeset_1">-->
+        <!--<createTable schemaName="tws_storage" tableName="color_table">-->
+            <!--<column name="id" type="bigint" autoIncrement="true">-->
+                <!--<constraints primaryKey="true" nullable="false" />-->
+            <!--</column>-->
+            <!--<column name="name" type="varchar(255)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+            <!--<column name="gradient" type="varchar(255)">-->
+                <!--<constraints nullable="false"/>-->
+            <!--</column>-->
+        <!--</createTable>-->
+    <!--</changeSet>-->
 
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_2">
@@ -88,19 +88,26 @@
             <column name="size" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="color" type="bigint">
-                <constraints nullable="false"/>
-            </column>
+            <column name="color" type="bigint"/>
             <column name="type" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="amount" type="int">
                 <constraints nullable="false"/>
             </column>
+            <column name="is_deleted" type="boolean"/>
         </createTable>
     </changeSet>
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_5.1">
+        <addDefaultValue catalogName="thewesch"
+                         columnDataType="boolean"
+                         columnName="is_deleted"
+                         defaultValueBoolean="false"
+                         schemaName="tws_storage"
+                         tableName="element_table"/>
+    </changeSet>
+    <changeSet author="iyurchenko" id="lgi_database-changeset_5.2">
         <createTable schemaName="tws_storage" tableName="comments">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -141,12 +148,12 @@
     </changeSet>
 
     <changeSet author="iyurchenko" id="lgi_database-changeset_9">
-        <addForeignKeyConstraint constraintName="fk_el_color"
-                                 baseTableSchemaName="tws_storage"
-                                 referencedTableSchemaName="tws_storage"
-                                 baseTableName="element_table" baseColumnNames="color"
-                                 referencedTableName="color_table"
-                                 referencedColumnNames="id"/>
+        <!--<addForeignKeyConstraint constraintName="fk_el_color"-->
+                                 <!--baseTableSchemaName="tws_storage"-->
+                                 <!--referencedTableSchemaName="tws_storage"-->
+                                 <!--baseTableName="element_table" baseColumnNames="color"-->
+                                 <!--referencedTableName="color_table"-->
+                                 <!--referencedColumnNames="id"/>-->
         <addForeignKeyConstraint constraintName="fk_el_size"
                                  baseTableSchemaName="tws_storage"
                                  referencedTableSchemaName="tws_storage"

@@ -1,10 +1,7 @@
 package com.lgi.theweschshop.shopdata.requests;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Getter
@@ -24,6 +21,7 @@ public class ElementSaveRequestDTO {
 
     private String color;
 
+    @NonNull
     private Long amount;
 
     private String gender;

@@ -78,6 +78,7 @@ public class ElementServiceImpl implements ElementService {
         element.setDescription( description );
         element.setGender( Gender.valueOf( gender ).name() );
         element.setName( name );
+        element.setIsDeleted( false );
 
         BigDecimal bigDecimal = new BigDecimal( price );
         element.setPrice( bigDecimal.setScale( 2, BigDecimal.ROUND_DOWN ).doubleValue() );
@@ -101,6 +102,9 @@ public class ElementServiceImpl implements ElementService {
     @Override
     @Transactional
     public void delete( Long id ) {
-        elementRepository.delete( id );
+        Element elementById = elementRepository.findElementById( id );
+        elementById.setIsDeleted( true );
+        elementRepository.save( elementById );
     }
+
 }

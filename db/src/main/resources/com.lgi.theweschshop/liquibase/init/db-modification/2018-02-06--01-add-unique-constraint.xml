@@ -3,11 +3,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+        <!--ALTER TABLE tws_storage.color_table ADD CONSTRAINT color_name_unique UNIQUE (name);-->
 <changeSet author="i.yurchenko" id="2018-02-06--01-add-unique-constraint">
 
     <sql>
         ALTER TABLE tws_storage.size_table ADD CONSTRAINT size_name_unique UNIQUE (name);
-        ALTER TABLE tws_storage.color_table ADD CONSTRAINT color_name_unique UNIQUE (name);
         ALTER TABLE tws_storage.type_table ADD CONSTRAINT type_name_unique UNIQUE (name);
         ALTER TABLE tws_storage.element_table DROP CONSTRAINT IF EXISTS color;
         ALTER TABLE tws_storage.element_table ADD COLUMN pictures int8[] null;

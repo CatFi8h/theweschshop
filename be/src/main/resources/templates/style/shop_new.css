@@ -154,13 +154,14 @@ ul {
     max-height: 130px;
     text-align: center;
     overflow: hidden;
-    display: block;
+    display: flex;
 }
 
 .nav_link_list__left {
     float: left;
     text-align: left;
     padding-right: 0;
+    padding-left: 15%;
 }
 
 .nav_link_list__right {

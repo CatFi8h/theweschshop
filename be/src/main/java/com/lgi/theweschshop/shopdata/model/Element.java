@@ -61,4 +61,7 @@ public class Element {
     @Column(name = "components")
     private String components;
 
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
+
 }

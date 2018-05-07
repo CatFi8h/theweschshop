@@ -20,11 +20,17 @@ public interface ElementRepository extends JpaRepository<Element, Long>, JpaSpec
 
     Collection<Element> findAllByType( Type type );
 
+    @Query("select e from Element e where e.isDeleted = false")
+    List<Element> findAll();
 
-    @Query("select e from Element e left join e.comments where e.id = :id ")
+
+    @Query("select e from Element e left join e.comments where e.id = :id and e.isDeleted = false")
     Element findElementById( @Param("id") Long id );
 
 
-    @Query("select e from Element e where e.id in :ids")
+    @Query("select e from Element e where e.id in :ids and e.isDeleted = false")
     Page<Element> findElementsById( Pageable pageable, @Param("ids") List<Long> ids );
+
+    @Query("update Element e set e.isDeleted = true where e.id = :id")
+    Element deleteElement( @Param("id") Long id );
 }
