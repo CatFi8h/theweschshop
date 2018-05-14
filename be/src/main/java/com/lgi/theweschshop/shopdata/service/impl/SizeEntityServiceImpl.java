@@ -23,7 +23,7 @@ public class SizeEntityServiceImpl implements SizeEntityService {
     public void saveSize( String size ) {
 
         SizeEntity sizeEntity = new SizeEntity();
-        sizeEntity.setSize( size );
+        sizeEntity.setName( size );
 
         sizeEntityRepository.save( sizeEntity );
     }

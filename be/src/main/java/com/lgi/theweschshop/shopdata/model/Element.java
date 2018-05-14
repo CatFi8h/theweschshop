@@ -48,12 +48,8 @@ public class Element {
     @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
     private List<Picture> pictures;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "size")
-    private SizeEntity size;
-
-    @Column(name = "amount")
-    private Integer amount;
+    @OneToMany(mappedBy = "element")
+    private Set<ElementSizeAmount> elementSizeAmounts;
 
     @Column(name = "price", scale = 0, columnDefinition="numeric")
     private Double price;

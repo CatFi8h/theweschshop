@@ -33,4 +33,7 @@ public interface ElementRepository extends JpaRepository<Element, Long>, JpaSpec
 
     @Query("update Element e set e.isDeleted = true where e.id = :id")
     Element deleteElement( @Param("id") Long id );
+
+    @Query("select e from Element e left join e.comments join fetch e.elementSizeAmounts s where e.id = :id and e.isDeleted = false")
+    Element findElementByIdAndSize( @Param("id") Long id );
 }

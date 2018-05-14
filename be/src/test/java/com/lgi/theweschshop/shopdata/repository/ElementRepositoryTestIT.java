@@ -1,6 +1,7 @@
 package com.lgi.theweschshop.shopdata.repository;
 
 import com.lgi.theweschshop.shopdata.model.Element;
+import com.lgi.theweschshop.shopdata.model.ElementSizeAmount;
 import com.lgi.theweschshop.shopdata.model.SizeEntity;
 import com.lgi.theweschshop.shopdata.model.Type;
 import org.junit.Test;
@@ -35,17 +36,21 @@ public class ElementRepositoryTestIT {
         entity.setGender( "Male" );
         entity.setCreationDate( new Date() );
         SizeEntity size = new SizeEntity();
-        size.setSize( "LL" );
-        entity.setSize( size );
-        entity.setAmount( 2 );
+        size.setName( "LL" );
         entity.setPrice( 2.0 );
+
+        ElementSizeAmount elementSizeAmount = new ElementSizeAmount();
+        elementSizeAmount.setAmount( 1 );
+        elementSizeAmount.setSize( size );
+        elementSizeAmount.setElement( entity );
         Type type = new Type();
         type.setName( "type" );
         entity.setType( type );
 
         elementRepository.save( entity );
 
-        Page<Element> elementsById = elementRepository.findElementsById( new PageRequest( 0, 10 ), new ArrayList<Long>( Arrays.asList( 1L, 2L, 3L, entity.getId() ) ) );
+        Page<Element> elementsById = elementRepository.findElementsById( new PageRequest( 0, 10 ),
+                new ArrayList<>( Arrays.asList( 1L, 2L, 3L, entity.getId() ) ) );
         List<Element> content = elementsById.getContent();
 
         Iterator<Element> iterator = content.iterator();

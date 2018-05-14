@@ -22,13 +22,13 @@ public class ElementServiceImplTest {
 
         ElementSaveRequestDTO elementRequest = new ElementSaveRequestDTO();
 
-        elementRequest.setAmount( 1L );
-        elementRequest.setColor( "White" );
-        elementRequest.setAmount( 10L );
-        elementRequest.setName( "Test" );
-        elementRequest.setDescription( "discription" );
-        elementRequest.setGender( "male" );
-        elementRequest.setSize( "XL" );
+//        elementRequest.setAmount( 1L );
+//        elementRequest.setColor( "White" );
+//        elementRequest.setAmount( 10L );
+//        elementRequest.setName( "Test" );
+//        elementRequest.setDescription( "discription" );
+//        elementRequest.setGender( "male" );
+//        elementRequest.setSize( "XL" );
 
 
 //        Element element = elementService.addElement( elementRequest );

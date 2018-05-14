@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,24 +18,12 @@ public class ElementResponse {
 
     private String name;
 
-    private String size;
+    private List<ElementSizeAmountResponseDTO> elementSizeAmountResponseDTO;
 
     private String gender;
 
-    private String type;
-
-    private Integer amount;
+    private TypeResponseDTO type;
 
     private Double price;
 
-
-    public ElementResponse( Element element ) {
-        this.id = element.getId();
-        this.name = element.getName();
-        this.size = element.getSize().getSize();
-        this.gender = element.getGender();
-        this.type = element.getType().getName();
-        this.amount = element.getAmount();
-        this.price = element.getPrice();
-    }
 }
