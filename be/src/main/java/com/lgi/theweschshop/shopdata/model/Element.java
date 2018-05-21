@@ -48,7 +48,7 @@ public class Element {
     @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
     private List<Picture> pictures;
 
-    @OneToMany(mappedBy = "element")
+    @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
     private Set<ElementSizeAmount> elementSizeAmounts;
 
     @Column(name = "price", scale = 0, columnDefinition="numeric")

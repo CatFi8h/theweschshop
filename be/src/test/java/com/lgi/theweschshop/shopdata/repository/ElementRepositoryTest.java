@@ -146,7 +146,7 @@ public class ElementRepositoryTest {
         pictureRepository.save( picture );
         commentRepository.save( comment );
         elementRepository.save( element );
-        elementSizeAmountRepository.save( elementSizeAmount );
+//        elementSizeAmountRepository.save( elementSizeAmount );
 
 
         Element elementByIdAndSize = elementRepository.findElementByIdAndSize( element.getId() );
