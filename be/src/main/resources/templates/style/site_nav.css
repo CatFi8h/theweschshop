@@ -144,11 +144,14 @@ section {
     position: relative;
 }
 
-.three {
+.instagram_section {
+    height: auto;
     background: greenyellow;
+    background-image: url("//unsplash.it/1600/900?random");
 }
 
 .one__buy {
+    display: flex;
 }
 
 .one__buy_men,
@@ -243,25 +246,61 @@ section {
     grid-column: span 3;
 }
 
-.item-one {
-background: url("//unsplash.it/600/401?random") center;
-}
-.item-two {
-background: url("//unsplash.it/600/402?random") center;
-}
-.item-three {
-background: url("//unsplash.it/600/403?random") center;
-}
-.item-four {
-background: url("//unsplash.it/600/404?random") center;
-}
-.item-five {
-background: url("//unsplash.it/600/405?random") center;
-}
-.item-six {
-background: url("//unsplash.it/600/406?random") center;
+.grid_section {
+    height: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
+.portfolio-2 {
+    display: grid;
+    grid-template-rows: repeat(3, 20em);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+.portfolio-item2 {
+    background: blueviolet;
+    color: whitesmoke;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.portfolio-item2.large {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+
+.portfolio-item2.medium {
+    grid-row: span 1;
+    grid-column: span 1;
+}
+
+.item-one {
+    background: url("//unsplash.it/600/401?random") center;
+}
+
+.item-two {
+    background: url("//unsplash.it/600/402?random") center;
+}
+
+.item-three {
+    background: url("//unsplash.it/600/403?random") center;
+}
+
+.item-four {
+    background: url("//unsplash.it/600/404?random") center;
+}
+
+.item-five {
+    background: url("//unsplash.it/600/405?random") center;
+}
+
+.item-six {
+    background: url("//unsplash.it/600/406?random") center;
+}
 
 .portfolio-item-body {
     background-color: black;
@@ -270,7 +309,6 @@ background: url("//unsplash.it/600/406?random") center;
     background-size: cover;
     position: relative;
 }
-
 
 .portfolio-item-body::before {
     content: '';
@@ -291,6 +329,11 @@ background: url("//unsplash.it/600/406?random") center;
 
 }
 
+.footer {
+    height: 250px;
+    background-color: black;
+    color: white;
+}
 
 @media (min-width: 950px) {
 
