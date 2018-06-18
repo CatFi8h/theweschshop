@@ -134,8 +134,8 @@ section {
 }
 
 .one {
-    padding: 40vh 0;
-    background: rgba(235, 246, 255, 0.84);
+    padding: 1vh 0;
+    background: rgba(157, 194, 255, 1);
     position: relative;
 }
 
@@ -151,21 +151,35 @@ section {
 }
 
 .one__buy {
+    height: 550px;
+    width: 100%;
+
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.one__buy_men,
+@media (min-width: 40rem) {
+    .one__buy {
+        flex-direction: row;
+    }
+
+}
+
+.one__buy_women,
+.one__buy_men {
+    margin: 0 1em;
+    width: 30%;
+    height: 70%;
+    z-index: 2;
+}
+
 .one__buy_women {
-    position: absolute;
-    width: 150px;
-    height: 150px;
     background: black;
-    top: 10%;
-    z-index: 9;
 }
 
 .one__buy_men {
-    left: 45%;
     background: whitesmoke;
 }
 
@@ -179,9 +193,9 @@ section {
     content: '';
     width: 150px;
     height: 150px;
-    background: rgba(235, 246, 255, 0.84);
+    background: rgba(157, 194, 255, 1);
     bottom: -1em;
-    z-index: 11;
+    z-index: 1;
 }
 
 .one_arrow_left {
@@ -196,6 +210,12 @@ section {
 
 .two {
     display: flex;
+}
+
+.inner_one {
+    height: 350px;
+    width: auto;
+    clip-path: polygon( 0 0, 100% 0, 90% 100%, 0 100%);
 }
 
 .main-content {
@@ -246,11 +266,18 @@ section {
     grid-column: span 3;
 }
 
+.grid_section_height {
+    padding: 0 10%;
+}
+
+.grid_section_width {
+    padding: 5% 0;
+}
+
 .grid_section {
     height: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
 }
+
 
 .portfolio-2 {
     display: grid;
