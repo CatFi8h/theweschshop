@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin</title>
+</head>
+<body>
+<div class="header">
+
+</div>
+<div style="padding: 5% ;">
+    <a href="admin_element.html">
+        <button class="button"><span>Add Element</span></button>
+    </a>
+    <table class="catalogTable">
+        <tr>
+            <td>Name</td>
+            <td>Size</td>
+            <td>Gender</td>
+            <td>Type</td>
+            <td>Amount</td>
+            <td>Price</td>
+            <td>Remove</td>
+        </tr>
+        <tr th:each="element : ${elements}">
+            <td>
+                <a th:href="@{'/edit/' + ${element.id}}" th:text="${element.name}" href="admin_element.html">ItemName</a>
+            </td>
+            <td class="alignRight" th:text="${element.size}">XL</td>
+            <td class="alignRight" th:text="${element.gender}">male</td>
+            <td class="alignRight" th:text="${element.type}">shirt</td>
+            <!--<td class="alignRight" th:text="${element.color}">Red</td>-->
+            <td class="alignRight" th:text="${element.amount}">3</td>
+            <td class="alignRight" th:text="${element.price}">3</td>
+            <td>
+                <form th:action="@{/delete/{id}(id=${element.id})}" method="post">
+                    <!--<input type="hidden" th:field="${element}">&#10006;</input>-->
+                    <button type="submit" onClick="return confirm('sure?')">&#10006;</button>
+                </form>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<link rel="stylesheet" type="text/css" href="css/adminStyle.css"/>
+</body>
+</html>

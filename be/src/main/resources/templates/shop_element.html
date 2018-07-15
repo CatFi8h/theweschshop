@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admin</title>
+</head>
+<body>
+<div class="header">
+
+</div>
+
+<div class="page">
+
+    <div class="navigation_menu">
+        <a th:href="@{/about.html}">About</a>
+        <a th:href="@{/templates/__shop.html}">Shop</a>
+        <a th:href="@{/contacts.html}">Contacts</a>
+        <a th:href="@{/login.html}">Login</a>
+
+    </div>
+
+    <div style="padding: 5% ;">
+
+        <img src="pictures/shop_now.jpeg"/>
+
+
+        <form th:action="@{/saveImage}" method="post" enctype="multipart/form-data">
+            <input type="file" name="img"/>
+            <input type="hidden" name="id" value="id" th:field="${element.id}"/>
+            <input type="submit"/>
+        </form>
+        <!--<form th:action="${saveImage}" method="post" enctype="multipart/form-data">-->
+        <!--Select images: <input type="file" name="img" />-->
+        <!--<input type="hidden" name="id" th:field="${element.id}" />-->
+        <!--<input type="submit"/>-->
+        <!--</form>-->
+
+        <div class="imageDiv">
+            <div th:each="picture : ${pictures}">
+                <img th:src="'data:image/png;base64,'+${picture.getEncodedString()}"
+                     alt="Mountain View" width="500" height="400"/>
+
+            </div>
+        </div>
+
+        <table class="element_table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>Gender</th>
+            </tr>
+            <tr>
+                <td>
+                    <span th:text="${element.id}">Id</span>
+                </td>
+                <td>
+                    <span th:text="${element.name}">Test</span>
+                </td>
+                <td>
+                    <span th:text="${element.description}">Test</span>
+                </td>
+                <td>
+                    <span th:text="${element.size.size}">Test</span>
+                </td>
+                <td>
+                    <span th:text="${element.type.name}">Test</span>
+                </td>
+                <td>
+                    <span th:text="${element.gender}">Test</span>
+                </td>
+            </tr>
+        </table>
+        <div class="comments">
+            Please Leave Your Comment
+            <form action="saveComment" th:action="@{/saveComment}" method="get">
+                <label for="ename">User Name</label>
+                <input type="text" id="ename" name="name" placeholder="Your name.."/>
+
+                <label for="eemail">Email</label>
+                <input type="text" id="eemail" name="email" placeholder="Place your email here.."/>
+
+
+                <label for="ecomment">Comment</label>
+                <input type="text" id="ecomment" name="comment" placeholder="Place your comment here.."/>
+                <input type="hidden" name="elementId" th:field="${element.id}"/>
+                <input type="submit" value="Submit"/>
+            </form>
+
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>E-mail</th>
+                    <th>Comment</th>
+                </tr>
+                <tr th:each="comment: ${element.comments}">
+                    <td>
+                        <div th:text="${comment.id}">1</div>
+                    </td>
+                    <td>
+                        <div th:text="${comment.name}">Igor</div>
+                    </td>
+                    <td>
+                        <div th:text="${comment.email}">a@a.com</div>
+                    </td>
+                    <td>
+                        <div th:text="${comment.comment}">Test Text</div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet" type="text/css" href="style/elementShopStyle.css"/>
+</body>
+</html>

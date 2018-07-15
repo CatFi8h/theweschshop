@@ -6,6 +6,8 @@ import com.lgi.theweschshop.shopdata.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("typeService")
 public class TypeServiceImpl implements TypeService {
 
@@ -13,9 +15,11 @@ public class TypeServiceImpl implements TypeService {
     private TypeRepository typeRepository;
 
     @Override
-    public Type saveType( Type type ) {
-        Type save = typeRepository.save( type );
-        return save;
+    public void saveType( String typeStr ) {
+        Type type = new Type();
+        type.setName( typeStr );
+
+        typeRepository.save( type );
     }
 
     @Override
@@ -31,6 +35,12 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type getDefaultType() {
         return typeRepository.findOne( 0L );
+    }
+
+    @Override
+    public List<Type> getAllTypes() {
+        return typeRepository.findAll();
+
     }
 
 }

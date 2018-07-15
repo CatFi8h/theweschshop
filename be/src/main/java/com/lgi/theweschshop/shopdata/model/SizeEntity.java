@@ -22,12 +22,7 @@ public class SizeEntity {
     private Long id;
 
     @NonNull
-    @Enumerated(EnumType.STRING)
     @Column(name = "name")
-    private Size size;
+    private String name;
 
-
-    public SizeEntity( Size size ) {
-        this.size = size;
-    }
 }

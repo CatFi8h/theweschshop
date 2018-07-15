@@ -7,6 +7,4 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <include relativeToChangelogFile="true" file="init/init-db-master.xml"/>
     <include relativeToChangelogFile="true" file="init/db-modification/db-modification-cumulative.xml"/>
-    <!--<include relativeToChangelogFile="true" file="qa/qa-cumulative.xml"/>-->
-    <!--<include relativeToChangelogFile="true" file="patches/patches-cumulative.xml"/>-->
 </databaseChangeLog>

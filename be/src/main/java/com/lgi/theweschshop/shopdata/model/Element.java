@@ -31,8 +31,8 @@ public class Element {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
-    private List<Comment> comment;
+    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
     @Column(name = "gender")
     private String gender;
@@ -41,23 +41,23 @@ public class Element {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "type")
     private Type type;
 
-//    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
-//    private Set<Picture> picture;
+    @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
+    private List<Picture> pictures;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "size")
-    private SizeEntity size;
+    @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
+    private Set<ElementSizeAmount> elementSizeAmounts;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "color")
-    private Color color;
+    @Column(name = "price", scale = 0, columnDefinition="numeric")
+    private Double price;
 
-    @Column(name = "amount")
-    private Integer amount;
+    @Column(name = "components")
+    private String components;
 
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
 
 }

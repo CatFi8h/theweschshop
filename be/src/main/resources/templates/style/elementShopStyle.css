@@ -1,0 +1,23 @@
+/* The navbar container */
+.navigation_menu {
+    position: sticky;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #333;
+}
+
+/* Navbar links */
+.navigation_menu a {
+
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    width: 15%;
+    text-decoration: none;
+}
+
+.page{
+    padding: 0 10%;
+}

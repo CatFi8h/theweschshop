@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+>
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>The Wesch' Shop</title>
-    <link rel="stylesheet" type="text/css" href="style/shop.css"/>
 </head>
 
 <body>
 
-    <div class="header">
-        <img class="logo" src="pictures/wesch_log.png"/>
-    </div>
-    <div class="navigation_menu">
-        <a href="">About</a>
-        <a href="">Shirts</a>
-        <a href="">Hats</a>
-        <a href="">Contacts</a>
-        <a href="">Login</a>
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <form th:action="@{/logout}" method="post">
-            <input th:type="submit" value="Sign Out"/>
-        </form>
-    </div>
+<div class="main">
 
-
-    <div class="rgallery" th:each="i : ${#numbers.sequence(0, rows - 1)}">
-
-        <div class="responsive">
-            <div class="gallery">
-                <a target="_blank" href="">
-                    <img src="pictures/wesch.jpg" alt="TEXT HERE" width="300" height="400"/>
+    <header class="header_class">
+        <nav class="nav-wrap">
+            <div class="nav-links"></div>
+            <div class="nav-logo">
+                <a href="/">
+                    <img class="logo" th:src="@{pictures/wesch_log.png}"/>
                 </a>
-                <div class="description">Smth about picture</div>
+            </div>
+            <ul class="nav-link-list">
+                <li class="nav__item"></li>
+                <li class="nav__item"></li>
+                <li class="nav__item"></li>
+                <li class="nav__item nav_selection__flags"></li>
+                <li class="nav__item nav_selection__shopping_cart"></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="header">
+
+    </div>
+
+    <div class="navigation_menu">
+        <a th:href="@{/about.html}">About</a>
+        <a th:href="@{/templates/__shop.html}">Shop</a>
+        <a th:href="@{/contacts.html}">Contacts</a>
+        <a th:href="@{/login.html}">Login</a>
+
+        <!--<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
+        <!--<form th:action="@{/logout}" method="post">-->
+        <!--<input th:type="submit" value="Sign Out"/>-->
+        <!--</form>-->
+    </div>
+
+    <div class="shop_page">
+        <div class="row">
+            <div class="column" th:each="element : ${elements}">
+                <div class="content">
+                    <a th:href="@{'/shop/' + ${element.id}}"><img src="/pictures/shop_now.jpeg" alt="Mountains"
+                                                                  style="width:100%"/></a>
+                    <span th:text="${element.id}">1.</span>
+                    <span th:text="${element.name}">ElementName</span>
+                    <span th:text="${element.price}">ElementName</span>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="footer">
+
+        <a target="_blank" title="follow me on instagram" href="http://www.instagram.com/thewesch">
+            <img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram40x40.png"/>
+        </a>
+        <a target="_blank" title="find us on Facebook" href="http://www.facebook.com/thewesch">
+            <img alt="find us on facebook"
+                 src="//login.create.net/images/icons/user/facebook-c_130x50.png"/>
+        </a>
 
     </div>
+</div>
 
 
-    <h1 class="text">Welcome to The Wesch` Shop</h1>
-    <!--Now is: <b th:text="${execInfo.now.time}"></b>-->
-    <!--Elements in system : <b th:text="${elements}"</b>-->
-    <div class="footer"></div>
-
-
+<link rel="stylesheet" type="text/css" th:href="@{css/shop.css}"/>
+<!--<link rel="stylesheet" type="text/css" href="style/shop1.css"/>-->
 </body>
 
 </html>
