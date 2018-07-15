@@ -6,6 +6,9 @@
 	<groupId>com.lgi</groupId>
 	<artifactId>theweschshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>fe-module</module>
+    </modules>
     <packaging>pom</packaging>
 
 	<name>theweschshop</name>

@@ -1,7 +1,7 @@
 package com.lgi.theweschshop.shopdata.controller;
 
 import com.lgi.theweschshop.shopdata.model.Element;
-import com.lgi.theweschshop.shopdata.requests.CartAddDTO;
+import com.lgi.theweschshop.shopdata.requests.CartAddRequest;
 import com.lgi.theweschshop.shopdata.requests.CartGetListRequestDTO;
 import com.lgi.theweschshop.shopdata.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class CartController extends WebMvcConfigurerAdapter {
 
     @GetMapping("cart/add")
     public String addToCart( Model model,
-                             CartAddDTO cart) {
+                             CartAddRequest cart) {
         cartService.addIdToCart( cart.getId(), cart.getAmount(), cart.getSessionId() );
         Collection<Element> cartForSession = cartService.getCartForSession( 1, "name", cart.getSessionId() );
 
