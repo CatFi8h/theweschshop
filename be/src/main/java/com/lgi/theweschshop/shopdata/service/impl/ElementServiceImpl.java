@@ -10,6 +10,7 @@ import com.lgi.theweschshop.shopdata.repository.ElementSizeAmountRepository;
 import com.lgi.theweschshop.shopdata.repository.SizeEntityRepository;
 import com.lgi.theweschshop.shopdata.repository.TypeRepository;
 import com.lgi.theweschshop.shopdata.requests.ElementSaveRequestDTO;
+import com.lgi.theweschshop.shopdata.response.ElementResponseList;
 import com.lgi.theweschshop.shopdata.response.dto.ElementResponse;
 import com.lgi.theweschshop.shopdata.response.dto.ElementSizeAmountResponseDTO;
 import com.lgi.theweschshop.shopdata.response.dto.SizeDTO;
@@ -46,6 +47,11 @@ public class ElementServiceImpl implements ElementService {
     @Override
     public List<Element> getAllElements() {
         List<Element> allElements = elementRepository.findAll();
+        ElementResponseList elementResponseList = new ElementResponseList();
+        ElementResponse elementResponse = new ElementResponse();
+        elementResponse.
+        elementResponseList.setItemsTotal(elementResponse);
+
         return allElements;
     }
 
@@ -53,41 +59,41 @@ public class ElementServiceImpl implements ElementService {
     public List<ElementResponse> getAllElementsResponse() {
         List<Element> allElements = elementRepository.findAll();
         List<ElementResponse> objects = new ArrayList<>();
-        for ( Element element : allElements ) {
+        for (Element element : allElements) {
             ElementResponse elementResponse = new ElementResponse();
-            elementResponse.setGender( element.getGender() );
-            elementResponse.setId( element.getId() );
-            elementResponse.setName( element.getName() );
-            elementResponse.setPrice( element.getPrice() );
+            elementResponse.setGender(element.getGender());
+            elementResponse.setId(element.getId());
+            elementResponse.setName(element.getName());
+            elementResponse.setPrice(element.getPrice());
             TypeResponseDTO type = new TypeResponseDTO();
             Type elementType = element.getType();
-            type.setId( elementType.getId() );
-            type.setName( elementType.getName() );
-            elementResponse.setType( type );
+            type.setId(elementType.getId());
+            type.setName(elementType.getName());
+            elementResponse.setType(type);
             Set<ElementSizeAmount> elementSizeAmounts = element.getElementSizeAmounts();
             List<ElementSizeAmountResponseDTO> elementSizeAmountResponseDTOList = new ArrayList<>();
-            for ( ElementSizeAmount elementSizeAmount : elementSizeAmounts ) {
+            for (ElementSizeAmount elementSizeAmount : elementSizeAmounts) {
                 ElementSizeAmountResponseDTO elementSizeAmountResponseDTO = new ElementSizeAmountResponseDTO();
-                elementSizeAmountResponseDTO.setAmount( elementSizeAmount.getAmount() );
+                elementSizeAmountResponseDTO.setAmount(elementSizeAmount.getAmount());
                 SizeDTO size = new SizeDTO();
-                size.setId( elementSizeAmount.getSize().getId() );
-                size.setName( elementSizeAmount.getSize().getName() );
-                elementSizeAmountResponseDTO.setSize( size );
-                elementSizeAmountResponseDTOList.add( elementSizeAmountResponseDTO );
+                size.setId(elementSizeAmount.getSize().getId());
+                size.setName(elementSizeAmount.getSize().getName());
+                elementSizeAmountResponseDTO.setSize(size);
+                elementSizeAmountResponseDTOList.add(elementSizeAmountResponseDTO);
             }
-            elementResponse.setElementSizeAmountResponseDTO( elementSizeAmountResponseDTOList );
-            objects.add( elementResponse );
+            elementResponse.setElementSizeAmountResponseDTO(elementSizeAmountResponseDTOList);
+            objects.add(elementResponse);
         }
         return objects;
     }
 
     @Override
-    public List<Element> getElementsListByType( Type type, Pageable pageable ) {
-        return ( List<Element> ) elementRepository.findAllByType( type );
+    public List<Element> getElementsListByType(Type type, Pageable pageable) {
+        return (List<Element>) elementRepository.findAllByType(type);
     }
 
     @Override
-    public Element save( ElementSaveRequestDTO elementRequest ) {
+    public Element save(ElementSaveRequestDTO elementRequest) {
         String typeStr = elementRequest.getType();
         Integer amount = elementRequest.getAmount();
         Long sizeId = elementRequest.getSizeId();
@@ -96,75 +102,75 @@ public class ElementServiceImpl implements ElementService {
         String name = elementRequest.getName();
         Double price = elementRequest.getPrice();
 
-        Type type = typeRepository.findDistinctByName( typeStr );
-        SizeEntity size = sizeEntityRepository.findOne( sizeId );
+        Type type = typeRepository.findDistinctByName(typeStr);
+        SizeEntity size = sizeEntityRepository.findOne(sizeId);
 
         Element element = new Element();
 
         ElementSizeAmount elementSizeAmount = new ElementSizeAmount();
-        elementSizeAmount.setElement( element );
-        elementSizeAmount.setSize( size );
-        elementSizeAmount.setAmount( amount );
+        elementSizeAmount.setElement(element);
+        elementSizeAmount.setSize(size);
+        elementSizeAmount.setAmount(amount);
 
-        element.setType( type );
-        element.setElementSizeAmounts( new HashSet<>( Arrays.asList( elementSizeAmount ) ) );
+        element.setType(type);
+        element.setElementSizeAmounts(new HashSet<>(Arrays.asList(elementSizeAmount)));
 
-        element.setDescription( description );
-        element.setGender( Gender.valueOf( gender ).name() );
-        element.setName( name );
-        element.setIsDeleted( false );
+        element.setDescription(description);
+        element.setGender(Gender.valueOf(gender).name());
+        element.setName(name);
+        element.setIsDeleted(false);
 
-        BigDecimal bigDecimal = new BigDecimal( price );
-        element.setPrice( bigDecimal.setScale( 2, BigDecimal.ROUND_DOWN ).doubleValue() );
-        element.setCreationDate( new Date( System.currentTimeMillis() ) );
+        BigDecimal bigDecimal = new BigDecimal(price);
+        element.setPrice(bigDecimal.setScale(2, BigDecimal.ROUND_DOWN).doubleValue());
+        element.setCreationDate(new Date(System.currentTimeMillis()));
 
-        return elementRepository.save( element );
+        return elementRepository.save(element);
 
     }
 
     @Override
-    public Optional<Element> getElementById( Number elementId ) {
-        return Optional.ofNullable( elementRepository.findElementById( elementId.longValue() ) );
-    }
-
-    @Override
-    @Transactional
-    public void delete( Element element ) {
-        elementRepository.delete( element );
+    public Optional<Element> getElementById(Number elementId) {
+        return Optional.ofNullable(elementRepository.findElementById(elementId.longValue()));
     }
 
     @Override
     @Transactional
-    public void delete( Long id ) {
-        Element elementById = elementRepository.findElementById( id );
-        elementById.setIsDeleted( true );
-        elementRepository.save( elementById );
+    public void delete(Element element) {
+        elementRepository.delete(element);
     }
 
-    public void addElementToCart( Long elementId, Long sizeId, Integer amount ) {
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        Element elementById = elementRepository.findElementById(id);
+        elementById.setIsDeleted(true);
+        elementRepository.save(elementById);
+    }
 
-        ElementSizeAmount elementSizeAmount = elementSizeAmountRepository.findByElementAndSize( elementId, sizeId );
+    public void addElementToCart(Long elementId, Long sizeId, Integer amount) {
+
+        ElementSizeAmount elementSizeAmount = elementSizeAmountRepository.findByElementAndSize(elementId, sizeId);
 
         Integer elementAmount = elementSizeAmount.getAmount();
 
-        if ( elementAmount < amount ) {
-            throw new IllegalArgumentException( "Not Enough Elements in Storage" );
+        if (elementAmount < amount) {
+            throw new IllegalArgumentException("Not Enough Elements in Storage");
         }
 
         Element element = elementSizeAmount.getElement();
 
         String sessionId = "sessionId";
-        Map<Long, Integer> sessionCart = cartCache.get( sessionId );
-        if ( sessionCart == null ) {
+        Map<Long, Integer> sessionCart = cartCache.get(sessionId);
+        if (sessionCart == null) {
             sessionCart = new HashMap<>();
         }
-        Integer amountOfElementsInCart = sessionCart.get( elementId );
-        if ( amountOfElementsInCart == null ) {
+        Integer amountOfElementsInCart = sessionCart.get(elementId);
+        if (amountOfElementsInCart == null) {
             amountOfElementsInCart = 0;
         }
         amountOfElementsInCart += amount;
-        sessionCart.put( element.getId(), amountOfElementsInCart );
-        cartCache.put( sessionId, sessionCart );
+        sessionCart.put(element.getId(), amountOfElementsInCart);
+        cartCache.put(sessionId, sessionCart);
     }
 
 }

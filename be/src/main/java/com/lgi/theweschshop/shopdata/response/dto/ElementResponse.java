@@ -1,6 +1,5 @@
 package com.lgi.theweschshop.shopdata.response.dto;
 
-import com.lgi.theweschshop.shopdata.model.Element;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +24,7 @@ public class ElementResponse {
     private TypeResponseDTO type;
 
     private Double price;
+
+    private String description;
 
 }
