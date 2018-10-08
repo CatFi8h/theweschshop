@@ -20,7 +20,10 @@ public interface ElementRepository extends JpaRepository<Element, Long>, JpaSpec
 
     Collection<Element> findAllByType( Type type );
 
-    @Query("select e from Element e where e.isDeleted = false")
+    @Query("select e from Element e " +
+            "join fetch e.elementSizeAmounts s " +
+            "join fetch e.type " +
+            "where e.isDeleted = false")
     List<Element> findAll();
 
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /**
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void addUser( String email, String userName, String password ) {
+    public void addUser( String email, String userName, String surname, String password ) {
         EUser user = new EUser( email, userName, password );
         userRepository.save( user );
     }
@@ -37,10 +38,14 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    @Override
-    @Transactional
-    public void delete( EUser user ) {
-        userRepository.delete( user );
-    }
+//    @Override
+//    @Transactional
+//    public void delete( String email ) {
+//        Optional<EUser> userById = getUserByEmail( email );
+//        EUser user = userById.orElseThrow( NoSuchElementException::new );
+//        user.setIsDeleted( true );
+//        userRepository.save( user );
+//
+//    }
 
 }

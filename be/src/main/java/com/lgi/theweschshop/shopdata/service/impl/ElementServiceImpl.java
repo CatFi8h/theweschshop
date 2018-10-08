@@ -47,11 +47,6 @@ public class ElementServiceImpl implements ElementService {
     @Override
     public List<Element> getAllElements() {
         List<Element> allElements = elementRepository.findAll();
-        ElementResponseList elementResponseList = new ElementResponseList();
-        ElementResponse elementResponse = new ElementResponse();
-        elementResponse.
-        elementResponseList.setItemsTotal(elementResponse);
-
         return allElements;
     }
 

@@ -1,0 +1,39 @@
+
+.logo {
+    float: left;
+    font-size: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.logo span {
+    font-weight: 400;
+}
+
+.site-nav {
+    height: auto;
+    position: relative;
+    background: transparent;
+    float: right;
+    clip-path: initial;
+}
+
+.site-nav li {
+    display: inline-block;
+    border: none;
+}
+
+.site-nav a {
+    padding: 0;
+    margin-left: 3em;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+    background: transparent;
+}
+
+.site-nav--icon {
+    display: none;
+}

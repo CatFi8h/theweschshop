@@ -13,12 +13,12 @@ public interface UserService {
     Optional<EUser> getUserByEmail( String email );
 
     //    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    void addUser( String email, String userName, String password );
+    void addUser( String email, String userName, String surname,  String password );
 
     //    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     List<EUser> getUserList();
 
     //    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    void delete( EUser user );
+//    void delete( String user );
 
 }
