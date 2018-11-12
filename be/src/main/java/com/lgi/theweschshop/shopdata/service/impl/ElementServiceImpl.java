@@ -10,7 +10,6 @@ import com.lgi.theweschshop.shopdata.repository.ElementSizeAmountRepository;
 import com.lgi.theweschshop.shopdata.repository.SizeEntityRepository;
 import com.lgi.theweschshop.shopdata.repository.TypeRepository;
 import com.lgi.theweschshop.shopdata.requests.ElementSaveRequestDTO;
-import com.lgi.theweschshop.shopdata.response.ElementResponseList;
 import com.lgi.theweschshop.shopdata.response.dto.ElementResponse;
 import com.lgi.theweschshop.shopdata.response.dto.ElementSizeAmountResponseDTO;
 import com.lgi.theweschshop.shopdata.response.dto.SizeDTO;
@@ -22,7 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -98,7 +99,7 @@ public class ElementServiceImpl implements ElementService {
         Double price = elementRequest.getPrice();
 
         Type type = typeRepository.findDistinctByName(typeStr);
-        SizeEntity size = sizeEntityRepository.findOne(sizeId);
+        SizeEntity size = sizeEntityRepository.findById(sizeId).orElse(null);
 
         Element element = new Element();
 
@@ -116,7 +117,7 @@ public class ElementServiceImpl implements ElementService {
         element.setIsDeleted(false);
 
         BigDecimal bigDecimal = new BigDecimal(price);
-        element.setPrice(bigDecimal.setScale(2, BigDecimal.ROUND_DOWN).doubleValue());
+        element.setPrice(bigDecimal.setScale(2, RoundingMode.HALF_UP).doubleValue());
         element.setCreationDate(new Date(System.currentTimeMillis()));
 
         return elementRepository.save(element);
@@ -124,8 +125,19 @@ public class ElementServiceImpl implements ElementService {
     }
 
     @Override
-    public Optional<Element> getElementById(Number elementId) {
-        return Optional.ofNullable(elementRepository.findElementById(elementId.longValue()));
+    public Optional<ElementResponse> getElementById(Number elementId) {
+        Element elementById = elementRepository.findElementById(elementId.longValue());
+        List<ElementSizeAmountResponseDTO> list = elementById.getElementSizeAmounts().stream()
+                .map(e ->
+                        new ElementSizeAmountResponseDTO(
+                                new SizeDTO(e.getSize().getId(), e.getSize().getName()), e.getAmount()))
+                .collect(Collectors.toList());
+        Type type = elementById.getType();
+        TypeResponseDTO typeResponseDTO = new TypeResponseDTO(type.getId(), type.getName());
+        ElementResponse elementResponse = new ElementResponse(
+                elementById.getId(), elementById.getName(), list,
+                elementById.getGender(), typeResponseDTO, elementById.getPrice(), elementById.getDescription());
+        return Optional.ofNullable(elementResponse);
     }
 
     @Override
@@ -152,8 +164,6 @@ public class ElementServiceImpl implements ElementService {
             throw new IllegalArgumentException("Not Enough Elements in Storage");
         }
 
-        Element element = elementSizeAmount.getElement();
-
         String sessionId = "sessionId";
         Map<Long, Integer> sessionCart = cartCache.get(sessionId);
         if (sessionCart == null) {
@@ -164,7 +174,7 @@ public class ElementServiceImpl implements ElementService {
             amountOfElementsInCart = 0;
         }
         amountOfElementsInCart += amount;
-        sessionCart.put(element.getId(), amountOfElementsInCart);
+        sessionCart.put(elementId, amountOfElementsInCart);
         cartCache.put(sessionId, sessionCart);
     }
 

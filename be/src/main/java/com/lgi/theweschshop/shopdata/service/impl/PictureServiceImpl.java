@@ -26,27 +26,27 @@ public class PictureServiceImpl implements PictureService {
     Environment environment;
 
     @Override
-    public void saveImage( MultipartFile img, Long elementId ) {
+    public void saveImage(MultipartFile img, Long elementId) {
 
         try {
             Picture picture = new Picture();
-            picture.setElement( elementRepository.findElementById( elementId ) );
+            picture.setElementId(elementId);
             byte[] bytes = img.getBytes();
             String originalFilename = img.getOriginalFilename();
-            savePictureToDisc( bytes, originalFilename, elementId );
-            picture.setPicture( bytes );
-            picture.setPictureName( originalFilename );
-            pictureRepository.save( picture );
-        } catch ( IOException e ) {
+            savePictureToDisc(bytes, originalFilename, elementId);
+            picture.setPicture(bytes);
+            picture.setPictureName(originalFilename);
+            pictureRepository.save(picture);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public boolean savePictureToDisc( byte[] bytes, String name, Long elementId ) throws IOException {
-        String pathToFiles = environment.getProperty( "path.pictures" ) + "/" + elementId;
-        File dir = new File( pathToFiles );
+    public boolean savePictureToDisc(byte[] bytes, String name, Long elementId) throws IOException {
+        String pathToFiles = environment.getProperty("path.pictures") + "/" + elementId;
+        File dir = new File(pathToFiles);
         dir.mkdirs();
-        FileUtils.writeByteArrayToFile( new File( pathToFiles + "/" + name ), bytes );
+        FileUtils.writeByteArrayToFile(new File(pathToFiles + "/" + name), bytes);
         return true;
     }
 

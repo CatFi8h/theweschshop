@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
-import Header from "./components/Header";
+import Toolbar from "./components/Toolbar/Toolbar";
 
 class App extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                <Toolbar/>
             </div>
         );
     }

@@ -1,0 +1,40 @@
+.nav_bar {
+    padding-left: 1.3% ;
+}
+
+.navi_logo {
+    margin-top: 20px;
+}
+
+.navi_ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: fragments;
+    position: fixed;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    top: 0;
+    width: 100%;
+}
+
+.navi_li {
+    float:left;
+    color: #666;
+}
+
+.navi_li__right{
+    float:right;
+}
+
+.nav_li__a{
+    color: #666;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav_li__a:hover {
+    background-color: #ddd;
+}

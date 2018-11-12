@@ -27,7 +27,7 @@ public interface ElementRepository extends JpaRepository<Element, Long>, JpaSpec
     List<Element> findAll();
 
 
-    @Query("select e from Element e left join e.comments where e.id = :id and e.isDeleted = false")
+    @Query("select e from Element e where e.id = :id and e.isDeleted = false")
     Element findElementById( @Param("id") Long id );
 
 
@@ -37,6 +37,6 @@ public interface ElementRepository extends JpaRepository<Element, Long>, JpaSpec
     @Query("update Element e set e.isDeleted = true where e.id = :id")
     Element deleteElement( @Param("id") Long id );
 
-    @Query("select e from Element e left join e.comments join fetch e.elementSizeAmounts s where e.id = :id and e.isDeleted = false")
+    @Query("select e from Element e join fetch e.elementSizeAmounts s where e.id = :id and e.isDeleted = false")
     Element findElementByIdAndSize( @Param("id") Long id );
 }

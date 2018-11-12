@@ -1,6 +1,5 @@
 package com.lgi.theweschshop.shopdata.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,10 +29,10 @@ public class Picture {
     @Column(name = "picture")
     private byte[] picture;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Element element;
+    @Column(name = "element_id")
+    private Long elementId;
 
     public String getEncodedString() {
-        return Base64.encodeBase64URLSafeString( this.picture );
+        return Base64.encodeBase64URLSafeString(this.picture);
     }
 }

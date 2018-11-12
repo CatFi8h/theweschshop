@@ -22,8 +22,7 @@ public class CommentServiceImpl implements CommentService {
     public void saveComment( CommentRequestDTO commentRequestDTO ) {
         Comment entity = new Comment();
         Long elementId = commentRequestDTO.getId();
-        Element elementById = elementRepository.findElementById( elementId );
-        entity.setElement( elementById );
+        entity.setElementId( elementId );
         entity.setName( commentRequestDTO.getName() );
         entity.setEmail( commentRequestDTO.getEmail() );
         entity.setComment( commentRequestDTO.getComment() );

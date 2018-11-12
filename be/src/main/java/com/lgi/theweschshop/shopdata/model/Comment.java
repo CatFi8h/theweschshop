@@ -28,8 +28,11 @@ public class Comment {
     @Column(name = "user_email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Element element;
+    @Column(name = "element_id")
+    private Long elementId;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Element element;
 
     @Column(name = "creation_date")
     @Temporal(TemporalType.TIMESTAMP)

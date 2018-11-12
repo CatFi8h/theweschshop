@@ -19,8 +19,6 @@ public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    @JsonProperty("id")
     private Long id;
 
     @Column(name = "name")

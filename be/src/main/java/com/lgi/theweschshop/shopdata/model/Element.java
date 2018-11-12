@@ -1,7 +1,5 @@
 package com.lgi.theweschshop.shopdata.model;
 
-import com.lgi.theweschshop.shopdata.enums.Gender;
-import com.lgi.theweschshop.shopdata.enums.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,9 +29,6 @@ public class Element {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "element", fetch = FetchType.LAZY)
-    private List<Comment> comments;
-
     @Column(name = "gender")
     private String gender;
 
@@ -45,13 +40,10 @@ public class Element {
     @JoinColumn(name = "type")
     private Type type;
 
-    @OneToMany(mappedBy = "element", fetch = FetchType.EAGER)
-    private List<Picture> pictures;
-
     @OneToMany(mappedBy = "element", cascade = CascadeType.ALL)
     private Set<ElementSizeAmount> elementSizeAmounts;
 
-    @Column(name = "price", scale = 0, columnDefinition="numeric")
+    @Column(name = "price", scale = 0, columnDefinition = "numeric")
     private Double price;
 
     @Column(name = "components")

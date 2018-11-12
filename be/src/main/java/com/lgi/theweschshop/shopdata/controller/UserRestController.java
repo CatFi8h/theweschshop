@@ -1,4 +1,4 @@
-package com.lgi.theweschshop.shopdata.controller.rest;
+package com.lgi.theweschshop.shopdata.controller;
 
 import com.lgi.theweschshop.shopdata.model.EUser;
 import com.lgi.theweschshop.shopdata.requests.AddUserRequest;

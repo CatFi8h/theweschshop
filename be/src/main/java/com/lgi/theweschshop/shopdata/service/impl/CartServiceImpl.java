@@ -30,7 +30,7 @@ public class CartServiceImpl implements CartService {
         } else {
             orders = new Sort( Sort.Direction.ASC, sortType );
         }
-        PageRequest pageRequest = new PageRequest( pageNumber - 1, 10, orders );
+        PageRequest pageRequest = PageRequest.of( pageNumber - 1, 10, orders );
         Set<CartElementDTO> cartElementDTOS = cart.get( sessionId );
         if ( cartElementDTOS == null ) {
             cartElementDTOS = new HashSet<>();
@@ -46,7 +46,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public void addIdToCart( Long id, Long amount, String sessionId ) {
 
-        Element one = elementRepository.findOne( id );
+        Element one = elementRepository.findById(id).orElse(null);
         if ( one == null ) {
             throw new IllegalArgumentException( "No Element with such ID" );
         }
@@ -67,7 +67,6 @@ public class CartServiceImpl implements CartService {
                 }
             }
 
-//            longs.stream().filter( e -> e.getElementId().equals( id ) ).forEach( e -> e.setAmount( amount ) );
         }
         cart.put( sessionId, longs );
     }

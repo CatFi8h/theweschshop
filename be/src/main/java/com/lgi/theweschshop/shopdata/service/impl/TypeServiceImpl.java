@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("typeService")
 public class TypeServiceImpl implements TypeService {
@@ -24,7 +25,7 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public Type getType( Long id ) {
-        return typeRepository.getOne( id );
+        return typeRepository.findById( id ).orElse(null);
     }
 
     @Override
@@ -34,7 +35,8 @@ public class TypeServiceImpl implements TypeService {
 
     @Override
     public Type getDefaultType() {
-        return typeRepository.findOne( 0L );
+        Type value = typeRepository.findById(0L).orElse(null);
+        return value;
     }
 
     @Override

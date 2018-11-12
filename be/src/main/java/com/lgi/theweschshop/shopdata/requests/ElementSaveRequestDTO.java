@@ -2,8 +2,8 @@ package com.lgi.theweschshop.shopdata.requests;
 
 
 import lombok.*;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Getter

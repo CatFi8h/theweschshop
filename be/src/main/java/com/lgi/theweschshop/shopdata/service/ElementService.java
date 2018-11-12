@@ -8,9 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * Created by Igor Yurchenko on 10/26/17.
@@ -25,7 +23,7 @@ public interface ElementService {
 
     Element save( ElementSaveRequestDTO elementRequest );
 
-    Optional<Element> getElementById( Number elementId );
+    Optional<ElementResponse> getElementById(Number elementId );
 
     void delete( Element element );
 
